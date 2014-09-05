@@ -26,6 +26,10 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
 
+    #find user by first and last name
+    @challenge.user = User.find_by(first_name: :user_first_name.capitalize, last_name: :user_last_name.capitalize)
+
+
     respond_to do |format|
       if @challenge.save
         format.html { redirect_to @challenge, notice: 'Challenge was successfully created.' }

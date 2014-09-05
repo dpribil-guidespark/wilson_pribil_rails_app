@@ -27,14 +27,14 @@ class GuessesController < ApplicationController
   def create
     @guess = Guess.new(guess_params)
 
-
     #set the current time
     current_time = DateTime.now
     last_challenge = Challenge.where(created_at: current_time-(7.day)..current_time).first
     @guess.challenge = last_challenge
 
     #find user by first and last name
-    @guess.user = User.find_by(first_name: :user_first_name.capitalize, last_name: :user_last_name.capitalize)
+    # @guess.user = User.find_by(first_name: :user_first_name.capitalize, last_name: :user_last_name.capitalize)
+    @guess.user = User.find(1)
 
     #set initial status to be wrong
     @guess.status = STATUS_WRONG

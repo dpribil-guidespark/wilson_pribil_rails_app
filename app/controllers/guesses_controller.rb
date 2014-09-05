@@ -33,7 +33,11 @@ class GuessesController < ApplicationController
     last_challenge = Challenge.where(created_at: current_time-(7.day)..current_time).first
     @guess.challenge = last_challenge
 
+    #find user by first and last name
     @guess.user = User.find_by(first_name: :user_first_name.capitalize, last_name: :user_last_name.capitalize)
+
+    #set initial status to be wrong
+    @guess.status = STATUS_WRONG
 
 
     respond_to do |format|

@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  before_action :set_user, only: [:new, :edit, :create, :update, :show]
 
   # GET /challenges
   # GET /challenges.json
@@ -20,6 +20,11 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1/edit
   def edit
+  end
+
+  def latest_challenge
+    @challenge = get_latest_challenge
+    redirect_to user_challenge_path(@challenge.user, @challenge)
   end
 
   # POST /challenges
@@ -79,5 +84,9 @@ class ChallengesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def challenge_params
       params.require(:challenge).permit(:question, :hint, :answer)
+    end
+
+    def get_latest_challenge
+      @challenge = Challenge.all.last
     end
 end

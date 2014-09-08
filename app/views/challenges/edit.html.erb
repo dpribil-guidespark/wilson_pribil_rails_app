@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @challenge %> |
-<%= link_to 'Back', challenges_path %>
+<%= link_to 'Show', user_challenge_path(@user, @challenge) %> |
+<%= link_to 'Back', user_challenges_path(@user) %>

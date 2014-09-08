@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :guesses
 
   resources :users do
-    resources :challenges
+    resources :challenges do
+      resources :guesses
+    end
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

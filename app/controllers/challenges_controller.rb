@@ -33,7 +33,7 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to @challenge, notice: 'Challenge was successfully created.' }
+        format.html { redirect_to user_challenge_path(@user, @challenge), notice: 'Challenge was successfully created.' }
         format.json { render :show, status: :created, location: @challenge }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class ChallengesController < ApplicationController
   def update
     respond_to do |format|
       if @challenge.update(challenge_params)
-        format.html { redirect_to @challenge, notice: 'Challenge was successfully updated.' }
+        format.html { redirect_to user_challenge_path(@user, @challenge), notice: 'Challenge was successfully updated.' }
         format.json { render :show, status: :ok, location: @challenge }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class ChallengesController < ApplicationController
   def destroy
     @challenge.destroy
     respond_to do |format|
-      format.html { redirect_to challenges_url, notice: 'Challenge was successfully destroyed.' }
+      format.html { redirect_to user_challenges_path(@user), notice: 'Challenge was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

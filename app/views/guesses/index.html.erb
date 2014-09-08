@@ -14,9 +14,6 @@
       <tr>
         <td><%= guess.answer %></td>
         <td><%= guess.status %></td>
-        <td><%= link_to 'Show', guess %></td>
-        <td><%= link_to 'Edit', edit_guess_path(guess) %></td>
-        <td><%= link_to 'Destroy', guess, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +21,4 @@
 
 <br>
 
-<%= link_to 'New Guess', new_guess_path %>
+<%= link_to 'Back', user_challenge_path(@user, @challenge) %>

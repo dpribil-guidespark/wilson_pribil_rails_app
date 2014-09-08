@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # set up the autocomplete fields
+  autocomplete :user, :first_name
+  autocomplete :user, :last_name
+
   # GET /users
   # GET /users.json
   def index

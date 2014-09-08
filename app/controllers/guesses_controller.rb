@@ -25,6 +25,11 @@ class GuessesController < ApplicationController
     user ||= User.create(user_params)
     @guess.user = user
 
+    # set up the permanent cookie
+    cookies.permanent[:guess_game_first_name] = user.first_name
+    cookies.permanent[:guess_game_last_name] = user.last_name
+
+
     #set initial status to be wrong
     @guess.status = STATUS_WRONG
 

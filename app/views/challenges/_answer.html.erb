@@ -4,11 +4,11 @@
 
         <div class="field">
           <%= f.label 'First name' %>
-          <%= f.text_field :first_name %>
+          <%= f.autocomplete_field :first_name, autocomplete_user_first_name_users_path, :value => cookies[:guess_game_first_name] %>
         </div>
         <div class="field">
           <%= f.label 'Last name' %>
-          <%= f.text_field :last_name %>
+          <%= f.autocomplete_field :last_name, autocomplete_user_last_name_users_path, :value => cookies[:guess_game_last_name] %>
         </div>
 
         <div class="field">
@@ -21,5 +21,6 @@
         </div>
 
     <% end %>
+
   </div>
 </div>

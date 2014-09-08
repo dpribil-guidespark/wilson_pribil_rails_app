@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :guesses
     end
   end
+
+  get '/challenges/latest', to: "challenges#latest_challenge"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

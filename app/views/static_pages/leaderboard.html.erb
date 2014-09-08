@@ -1,0 +1,15 @@
+<h1>Leaderboard</h1>
+
+<% if challenge_winners(@challenge).any? %>
+  <h2>Last Week's <%= pluralize(challenge_winners(@challenge).count, "Geek")%>:</h2>
+  <ul>
+    <% challenge_winners(@challenge).each do |guess| %>
+    <li> <%= guess.user.first_name %> <%= guess.user.last_name %> </li>
+    <% end %> 
+  </ul>
+<% end %>
+
+
+<h2>Current Standings:</h2>
+
+

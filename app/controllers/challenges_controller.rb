@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /challenges
   # GET /challenges.json
@@ -14,7 +15,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/new
   def new
-    @challenge = Challenge.new
+    @challenge = @user.challenges.new
   end
 
   # GET /challenges/1/edit
@@ -24,7 +25,11 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
-    @challenge = Challenge.new(challenge_params)
+    @challenge = @user.challenges.new(challenge_params)
+
+    #find user by first and last name
+    #@challenge.user = User.find_by(first_name: :user_first_name.capitalize, last_name: :user_last_name.capitalize)
+
 
     respond_to do |format|
       if @challenge.save
@@ -65,6 +70,10 @@ class ChallengesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
       @challenge = Challenge.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

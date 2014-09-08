@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Challenge do
 
-  before { @challenge = Challenge.new(question: "3.142", hint: "Tasty", answer: "Approximation to Pi", user_id: 1) }
-
+  before { @challenge = Challenge.new(question: "3.142", hint: "Tasty", answer: "Approximation to Pi", user_id: 1) } #Need to remove the user_id code!
+  # before { @challenge = Challenge.new(question: "3.142", hint: "Tasty", answer: "Approximation to Pi") } 
   subject { @challenge }
 
   it { should respond_to(:question) }
@@ -30,13 +30,17 @@ describe Challenge do
     it { should be_valid }
   end
 
-
   describe "when question+answer is a duplicate" do
     before do 
       challenge_with_same_question = @challenge.dup
       challenge_with_same_question.save
     end
     it { should_not be_valid}
+  end
+
+  describe "when user_id is not present" do
+    before {@challenge.user_id = nil}
+    it { should_not be_valid }
   end
 
 end

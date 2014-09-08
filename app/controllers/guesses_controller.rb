@@ -15,7 +15,6 @@ class GuessesController < ApplicationController
   # GET /guesses/new
   def new
     @guess = Guess.new
-
   end
 
   # GET /guesses/1/edit
@@ -27,7 +26,7 @@ class GuessesController < ApplicationController
   def create
     @guess = Guess.new(guess_params)
 
-    #set the current time
+    #find the current challenge
     current_time = DateTime.now
     last_challenge = Challenge.where(created_at: current_time-(7.day)..current_time).first
     @guess.challenge = last_challenge

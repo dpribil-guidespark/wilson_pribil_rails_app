@@ -1,7 +1,25 @@
 <h1>Leaderboard</h1>
 
+
 <% if challenge_winners(@challenge).any? %>
-  <h2>Last Week's <%= pluralize(challenge_winners(@challenge).count, "Geek")%>:</h2>
+  <h2>Last Challenge:</h2>
+  <blockquote>
+    <h3><%= @challenge.question %></h3>
+    <footer><%= @challenge.user.first_name %> <%= @challenge.user.last_name %></footer>
+  </blockquote>
+
+  <% if @challenge.hint %>
+      <p>
+        <strong>Hint:</strong>
+        <%= @challenge.hint %>
+      </p>
+  <% end %>
+
+  <blockquote>
+    <h2>Answer: <%= @challenge.answer %></h2>
+  </blockquote>
+
+  <h3>Last Week's <%= "Geek".pluralize(challenge_winners(@challenge).count)%>:</h3>
   <ul>
     <% challenge_winners(@challenge).each do |guess| %>
     <li> <%= guess.user.first_name %> <%= guess.user.last_name %> </li>
@@ -13,3 +31,23 @@
 <h2>Current Standings:</h2>
 
 
+<div class="row">
+  <div class="span6 offset3">
+    <table class="table table-striped table-bordered">
+      <thead>  
+        <tr>
+          <th>Geek</th>
+          <th>Number of Geek of the Weeks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sorted_list_of_geeks.each do |geek| %>
+        <tr>
+          <td> <%= User.find(geek[:geek_id]).first_name %> <%= User.find(geek[:geek_id]).last_name %></td>
+          <td> <%= geek[:geek_count] %></td>
+        </tr>
+        <% end %> 
+      </tbody>
+    </table>
+  </div>
+</div>

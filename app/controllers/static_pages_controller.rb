@@ -7,5 +7,7 @@ class StaticPagesController < ApplicationController
 
   def leaderboard
     @challenge=Challenge.last
+    @guesses=Guess.all
+    @correct_guesses = @guesses.where(:status => STATUS_RIGHT)
   end
 end

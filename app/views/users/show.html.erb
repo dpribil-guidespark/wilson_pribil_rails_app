@@ -11,8 +11,9 @@
 </p>
 
 <p>
-  <strong>Geek Record:</strong>
-  <%= number_of_wins(@user) %>/<%= number_of_guesses(@user) %>
+  <strong>Geek of the Week Record:</strong>
+  <%= number_of_wins(@user) %> wins (entered <%= number_of_guesses(@user) %> challenges).
+
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

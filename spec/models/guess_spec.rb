@@ -8,4 +8,7 @@ describe Guess do
 
   it { should respond_to(:answer) }
 
+  it { should be_valid }
+
+
 end

@@ -25,8 +25,8 @@ describe User do
     before do
       user_with_same_name = @user.dup
       user_with_same_name.save
-      # user_with_same_name.first_name = @user.first_name.upcase
-      # user_with_same_name.last_name = @user.last_name.upcase
+      user_with_same_name.first_name = @user.first_name.upcase # user model auto-capitalizes on save
+      user_with_same_name.last_name = @user.last_name.upcase
     end
     it { should_not be_valid}
   end

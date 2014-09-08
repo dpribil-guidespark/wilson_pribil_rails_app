@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Challenge do
 
-  before { @challenge = Challenge.new(question: "3.142", hint: "Tasty", answer: "Approximation to Pi") }
+  before { @challenge = Challenge.new(question: "3.142", hint: "Tasty", answer: "Approximation to Pi", user_id: 1) }
 
   subject { @challenge }
 
@@ -14,6 +14,7 @@ describe Challenge do
     before { @challenge.save }
     it { should be_valid }
   end
+
   describe "when question is not present" do
     before { @challenge.question = " " }
     it { should_not be_valid }
@@ -29,8 +30,12 @@ describe Challenge do
     it { should be_valid }
   end
 
-  describe "when question is a duplicate" do
-    before { challenge_with_same_question = @challenge.dup }
+
+  describe "when question+answer is a duplicate" do
+    before do 
+      challenge_with_same_question = @challenge.dup
+      challenge_with_same_question.save
+    end
     it { should_not be_valid}
   end
 

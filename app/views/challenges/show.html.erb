@@ -1,19 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @challenge.question %>
-</p>
+<h1>This week's challenge is:</h1>
 
-<p>
-  <strong>Hint:</strong>
-  <%= @challenge.hint %>
-</p>
+<blockquote>
+  <h3><%= @challenge.question %></h3>
+  <footer>A user</footer>
+</blockquote>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @challenge.answer %>
-</p>
+<% if @challenge.hint %>
+    <p>
+      <strong>Hint:</strong>
+      <%= @challenge.hint %>
+    </p>
+<% end %>
 
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
+<% if @guess %>
+    <%= render 'challenges/answer'%>
+<% end %>
+

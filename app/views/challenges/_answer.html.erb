@@ -2,22 +2,25 @@
   <div class="span6 offset3">
     <%= form_for(:guess, url: user_challenge_guesses_path(@user, @challenge)) do |f| %>
 
-        <div class="field">
-          <%= f.label 'First name' %>
-          <%= f.autocomplete_field :first_name, autocomplete_user_first_name_users_path, :value => cookies[:guess_game_first_name] %>
-        </div>
-        <div class="field">
-          <%= f.label 'Last name' %>
-          <%= f.autocomplete_field :last_name, autocomplete_user_last_name_users_path, :value => cookies[:guess_game_last_name] %>
+        <div class="form-group col-xs-6">
+          <div class="field">
+            <%= f.autocomplete_field :first_name, autocomplete_user_first_name_users_path, :value => cookies[:guess_game_first_name], :class => "form-control", :placeholder => "First Name" %>
+          </div>
         </div>
 
-        <div class="field">
-          <%= f.label :answer %>
-          <br>
-          <%= f.text_field :answer %>
+        <div class="form-group col-xs-6">
+          <div class="field">
+            <%= f.autocomplete_field :last_name, autocomplete_user_last_name_users_path, :value => cookies[:guess_game_last_name], :class => "form-control", :placeholder => "Last Name" %>
+          </div>
         </div>
-        <div class="actions">
-          <%= f.submit %>
+
+        <div class="col-lg-6">
+          <div class="input-group">
+              <%= f.text_field :answer, :class => "form-control", :placeholder => "Your guess?" %>
+              <span class="input-group-btn">
+                   <%= f.submit "Submit", :class => 'btn btn-default' %>
+              </span>
+          </div>
         </div>
 
     <% end %>

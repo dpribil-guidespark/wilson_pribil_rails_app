@@ -1,6 +1,6 @@
 class GuessesController < ApplicationController
   before_action :set_guess, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_challenge
+  before_action :set_user_challenge, only: [:index, :create]
 
   # GET /guesses
   # GET /guesses.json
@@ -41,6 +41,13 @@ class GuessesController < ApplicationController
         format.html { redirect_to user_challenge_path(@user, @challenge) }
       end
     end
+  end
+
+  def update_guess_status
+    guess = Guess.find(params[:guess_id])
+    guess.status = params[:guess_status]
+    guess.save
+    render nothing: true
   end
 
   private

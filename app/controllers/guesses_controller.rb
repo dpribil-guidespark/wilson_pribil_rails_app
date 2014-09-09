@@ -1,6 +1,7 @@
 class GuessesController < ApplicationController
   before_action :set_guess, only: [:show, :edit, :update, :destroy]
   before_action :set_user_challenge, only: [:index, :create]
+  http_basic_authenticate_with name: "user", password: "password", only: [:index, :update_guess_status]
 
   # GET /guesses
   # GET /guesses.json

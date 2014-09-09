@@ -33,7 +33,7 @@ class GuessesController < ApplicationController
 
     respond_to do |format|
       if @guess.save
-        format.html { redirect_to challenge_path(@challenge), notice: 'Guess was successfully created.' }
+        format.html { redirect_to challenge_path(@challenge, tab: 'guesses_tab'), notice: 'Guess was successfully created.' }
       else
         format.html { redirect_to challenge_path(@challenge) }
       end

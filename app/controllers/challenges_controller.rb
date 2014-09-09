@@ -12,6 +12,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/1
   # GET /challenges/1.json
   def show
+    @tab = params[:tab]
   end
 
   # GET /challenges/new

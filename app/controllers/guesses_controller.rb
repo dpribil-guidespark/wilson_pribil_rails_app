@@ -1,6 +1,6 @@
 class GuessesController < ApplicationController
   before_action :set_guess, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_challenge, only: [:index, :create]
+  before_action :set_user_challenge, only: [:index, :create, :destroy]
   http_basic_authenticate_with name: "user", password: "password", only: [:index, :update_guess_status]
 
   # GET /guesses
@@ -33,10 +33,17 @@ class GuessesController < ApplicationController
 
     respond_to do |format|
       if @guess.save
-        format.html { redirect_to challenge_guesses_path(@challenge), notice: 'Guess was successfully created.' }
+        format.html { redirect_to challenge_path(@challenge), notice: 'Guess was successfully created.' }
       else
         format.html { redirect_to challenge_path(@challenge) }
       end
+    end
+  end
+
+  def destroy
+    @guess.destroy
+    respond_to do |format|
+      format.html { redirect_to challenge_guesses_path(@challenge), notice: 'Challenge was successfully destroyed.' }
     end
   end
 

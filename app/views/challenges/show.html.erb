@@ -30,7 +30,7 @@
       <div class="panel-heading">
         <h2 class="panel-title">Current Guesses</h2>
       </div>
-      <%= render partial: 'layouts/guesses', :locals => {:showSwitch => false, :guesses => @challenge.guesses}%>
+      <%= render partial: 'layouts/guesses', :locals => {:isAdmin => false, :guesses => @challenge.guesses}%>
     </div>
   </div>
 </div>

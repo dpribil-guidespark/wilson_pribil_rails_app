@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/home'
+
+  get 'static_pages/about'
+
+  get 'static_pages/leaderboard'
+
   resources :users do
     get :autocomplete_user_first_name, :on => :collection
     get :autocomplete_user_last_name, :on => :collection

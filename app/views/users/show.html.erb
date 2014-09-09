@@ -10,5 +10,11 @@
   <%= @user.last_name %>
 </p>
 
+<p>
+  <strong>Geek of the Week Record:</strong>
+  <%= number_of_wins(@user) %> wins (entered <%= number_of_guesses(@user) %> challenges).
+
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

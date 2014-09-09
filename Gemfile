@@ -47,6 +47,9 @@ gem 'sprockets'
 
 gem 'rails3-jquery-autocomplete'
 
+gem "bootstrap-switch-rails"
+gem "font-awesome-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

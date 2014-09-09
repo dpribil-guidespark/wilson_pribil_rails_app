@@ -30,6 +30,7 @@ GEM
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap-switch-rails (3.0.2)
     builder (3.2.2)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -53,6 +54,8 @@ GEM
     erubis (2.7.0)
     execjs (2.2.1)
     ffi (1.9.3)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -191,9 +194,11 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
+  bootstrap-switch-rails
   capybara (= 2.1.0)
   childprocess (= 0.3.6)
   coffee-rails (~> 4.0.0)
+  font-awesome-rails
   guard-spork (= 1.5.0)
   jbuilder (~> 2.0)
   jquery-rails

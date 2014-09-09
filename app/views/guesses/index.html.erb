@@ -1,28 +1,7 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h2 class="panel-title">Current Guesses</h2>
   </div>
-  <div class="panel-body">
-    <div class="span6 offset3">
-      <table class="table table-striped ">
-        <thead>
-        <tr>
-          <th>Guess</th>
-          <th>Guesser</th>
-          <th>Correct?</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @guesses.each do |guess| %>
-            <tr>
-              <td> <%= guess.answer %> </td>
-              <td> <%= guess.user.first_name %> <%= guess.user.last_name %> </td>
-              <td><input id="guess_eval_checkbox" type="checkbox" data-guess-id=<%= guess.id%> <%= 'checked=true' unless guess.status == 0 %>></td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <%= render partial: 'layouts/guesses', :locals => {:showSwitch => true, :guesses => @guesses}%>
   <div class="panel-footer"><%= link_to 'Back to challenge', user_challenge_path(@user, @challenge), :class => "btn btn-default"%></div>
 </div>

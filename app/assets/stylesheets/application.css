@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require jquery-ui
+ *= require font-awesome
+ *= require bootstrap3-switch
  *= require_tree .
  *= require_self
  */

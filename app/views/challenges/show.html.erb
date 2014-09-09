@@ -1,20 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>This week's challenge is:</h1>
+<ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
+  <li class="active"><a href="#challenge_tab" data-toggle="tab">Challenge</a></li>
+  <li><a href="#guesses_tab" data-toggle="tab">Guesses</a></li>
+</ul>
+<div id="my-tab-content" class="tab-content">
+  <div class="tab-pane active" id="challenge_tab">
+    <h1 class="text-center">Challenge of the week</h1>
 
-<blockquote>
-  <h3><%= @challenge.question %></h3>
-  <footer><%= "#{@user.first_name} #{@user.last_name}" %></footer>
-</blockquote>
+    <blockquote>
+      <h3><%= @challenge.question %></h3>
+      <footer><%= "#{@user.first_name} #{@user.last_name}" %></footer>
+    </blockquote>
 
-<% if @challenge.hint %>
-    <p>
-      <strong>Hint:</strong>
-      <%= @challenge.hint %>
-    </p>
-<% end %>
+    <% if @challenge.hint %>
+        <p>
+          <strong>Hint:</strong>
+          <%= @challenge.hint %>
+        </p>
+    <% end %>
 
-<%= render 'challenges/answer'%>
+    <%= render 'challenges/answer'%>
+  </div>
+  <div class="tab-pane" id="guesses_tab">
 
-<%= render 'challenges/challenge_guesses'%>
+    <h1 class="text-center">What others guessed...</h1>
 
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title">Current Guesses</h2>
+      </div>
+      <%= render partial: 'layouts/guesses', :locals => {:showSwitch => false, :guesses => @challenge.guesses}%>
+    </div>
+  </div>
+</div>

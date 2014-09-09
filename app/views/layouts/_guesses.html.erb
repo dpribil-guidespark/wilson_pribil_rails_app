@@ -1,0 +1,30 @@
+<div class="panel-body">
+  <div class="span6 offset3">
+    <table class="table table-striped ">
+      <thead>
+      <tr>
+        <th>Guess</th>
+        <th>Guesser</th>
+        <% if showSwitch %>
+        <th>Correct?</th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% guesses.each do |guess| %>
+          <tr>
+            <td> <%= guess.answer %> </td>
+            <td> <%= guess.user.first_name %> <%= guess.user.last_name %> </td>
+            <% if showSwitch %>
+            <td><input id="guess_eval_checkbox" type="checkbox" name="gg-checkbox"
+                       data-size="large" data-on-text="<span class='fa fa-thumbs-up fa-lg'></span>"
+                       data-off-text="<span class='fa fa-thumbs-down fa-lg'></span>"
+                       <%= 'checked' unless guess.status == 0 %>
+                       data-guess-id=<%= guess.id %>></td>
+            <% end %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

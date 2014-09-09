@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
+    if Challenge.all.count > 0
+      redirect_to 'challenges#latest_challenge'
+    end
   end
 
   def about

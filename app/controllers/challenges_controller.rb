@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:new, :edit, :create, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :index]
 
   # GET /challenges
   # GET /challenges.json
@@ -15,7 +15,6 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/new
   def new
-    @challenge = @user.challenges.new
   end
 
   # GET /challenges/1/edit
@@ -30,6 +29,12 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
+    # set user from username
+    @user = find_user_by_name params[:challenge][:first_name].capitalize, params[:challenge][:last_name].capitalize
+
+    cookies.permanent[:guess_game_first_name] = @user.first_name
+    cookies.permanent[:guess_game_last_name] = @user.last_name
+
     @challenge = @user.challenges.new(challenge_params)
 
     #find user by first and last name

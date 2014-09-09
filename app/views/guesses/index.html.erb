@@ -1,24 +1,7 @@
-<h1>Listing guesses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Answer</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @guesses.each do |guess| %>
-      <tr>
-        <td><%= guess.answer %></td>
-        <td><%= guess.status %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Back', user_challenge_path(@user, @challenge) %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">Current Guesses</h2>
+  </div>
+  <%= render partial: 'layouts/guesses', :locals => {:showSwitch => true, :guesses => @guesses}%>
+  <div class="panel-footer"><%= link_to 'Back to challenge', user_challenge_path(@user, @challenge), :class => "btn btn-default"%></div>
+</div>

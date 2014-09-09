@@ -1,0 +1,11 @@
+<div class="form-group col-xs-6">
+  <div class="field">
+    <%= form.autocomplete_field :first_name, autocomplete_user_first_name_users_path, :value => cookies[:guess_game_first_name], :class => "form-control", :placeholder => "First Name" %>
+  </div>
+</div>
+
+<div class="form-group col-xs-6">
+  <div class="field">
+    <%= form.autocomplete_field :last_name, autocomplete_user_last_name_users_path, :value => cookies[:guess_game_last_name], :class => "form-control", :placeholder => "Last Name" %>
+  </div>
+</div>

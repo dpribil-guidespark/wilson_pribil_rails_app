@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905165124) do
+ActiveRecord::Schema.define(version: 20140909151547) do
 
   create_table "challenges", force: true do |t|
-    t.string   "question"
-    t.string   "hint"
-    t.string   "answer"
+    t.text     "question"
+    t.text     "hint"
+    t.text     "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

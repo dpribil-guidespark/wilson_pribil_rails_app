@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
-  <li class="active"><a href="#challenge_tab" data-toggle="tab">Challenge</a></li>
-  <li><a href="#guesses_tab" data-toggle="tab">Guesses</a></li>
+  <li <% unless @tab || @tab ==  'challenge_tab'%>class="active"<% end %>><a href="#challenge_tab" data-toggle="tab">Challenge</a></li>
+  <li <% if @tab ==  'guesses_tab'%>class="active"<% end %>><a href="#guesses_tab" data-toggle="tab">Guesses</a></li>
 </ul>
 <div id="my-tab-content" class="tab-content">
-  <div class="tab-pane active" id="challenge_tab">
+  <div class="tab-pane<% unless @tab || @tab ==  'challenge_tab'%> active<% end %>" id="challenge_tab">
     <h1 class="text-center">Challenge of the week</h1>
 
     <blockquote>
@@ -22,7 +22,7 @@
 
     <%= render 'challenges/answer'%>
   </div>
-  <div class="tab-pane" id="guesses_tab">
+  <div class="tab-pane<% if @tab ==  'guesses_tab'%> active<% end %>" id="guesses_tab">
 
     <h1 class="text-center">What others guessed...</h1>
 
@@ -30,7 +30,7 @@
       <div class="panel-heading">
         <h2 class="panel-title">Current Guesses</h2>
       </div>
-      <%= render partial: 'layouts/guesses', :locals => {:showSwitch => false, :guesses => @challenge.guesses}%>
+      <%= render partial: 'layouts/guesses', :locals => {:isAdmin => false, :guesses => @challenge.guesses}%>
     </div>
   </div>
 </div>

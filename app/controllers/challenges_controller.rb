@@ -12,6 +12,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/1
   # GET /challenges/1.json
   def show
+    @tab = params[:tab]
   end
 
   # GET /challenges/new
@@ -73,7 +74,6 @@ class ChallengesController < ApplicationController
     @challenge.destroy
     respond_to do |format|
       format.html { redirect_to challenges_path, notice: 'Challenge was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

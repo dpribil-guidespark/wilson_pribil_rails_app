@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
   http_basic_authenticate_with name: "user", password: "password", only: [:new, :create]
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:edit, :update, :show, :index]
+  before_action :set_user, only: [:edit, :update, :show]
 
   # GET /challenges
   # GET /challenges.json
@@ -24,7 +24,7 @@ class ChallengesController < ApplicationController
 
   def latest_challenge
     @challenge = get_latest_challenge
-    redirect_to user_challenge_path(@challenge.user, @challenge)
+    redirect_to challenge_path(@challenge)
   end
 
   # POST /challenges
@@ -44,7 +44,7 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to user_challenge_path(@user, @challenge), notice: 'Challenge was successfully created.' }
+        format.html { redirect_to challenge_path(@challenge), notice: 'Challenge was successfully created.' }
         format.json { render :show, status: :created, location: @challenge }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class ChallengesController < ApplicationController
   def update
     respond_to do |format|
       if @challenge.update(challenge_params)
-        format.html { redirect_to user_challenge_path(@user, @challenge), notice: 'Challenge was successfully updated.' }
+        format.html { redirect_to challenge_path(@challenge), notice: 'Challenge was successfully updated.' }
         format.json { render :show, status: :ok, location: @challenge }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class ChallengesController < ApplicationController
   def destroy
     @challenge.destroy
     respond_to do |format|
-      format.html { redirect_to user_challenges_path(@user), notice: 'Challenge was successfully destroyed.' }
+      format.html { redirect_to challenges_path, notice: 'Challenge was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,7 +84,7 @@ class ChallengesController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:user_id])
+      @user = @challenge.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -93,6 +93,6 @@ class ChallengesController < ApplicationController
     end
 
     def get_latest_challenge
-      @challenge = Challenge.all.last
+      @challenge = Challenge.last
     end
 end

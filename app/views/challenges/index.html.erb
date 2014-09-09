@@ -16,9 +16,9 @@
         <td><%= challenge.question %></td>
         <td><%= challenge.hint %></td>
         <td><%= challenge.answer %></td>
-        <td><%= link_to 'Show', user_challenge_path(@user, challenge) %></td>
-        <td><%= link_to 'Edit', edit_user_challenge_path(@user, challenge) %></td>
-        <td><%= link_to 'Destroy', user_challenge_path(@user, challenge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', challenge_path(challenge) %></td>
+        <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
+        <td><%= link_to 'Destroy', challenge_path(challenge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Challenge', new_user_challenge_path(@user) %>
+<%= link_to 'New Challenge', new_challenge_path %>

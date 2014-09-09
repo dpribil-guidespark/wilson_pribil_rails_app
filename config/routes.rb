@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'static_pages/home'
+  get 'home', to: 'static_pages#home'
 
-  get 'static_pages/about'
+  get 'about', to: 'static_pages#about'
 
-  get 'static_pages/leaderboard'
+  get 'leaderboard', to: 'static_pages#leaderboard'
+
+  get 'challenges/latest', to: 'challenges#latest_challenge'
 
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'
@@ -12,13 +14,12 @@ Rails.application.routes.draw do
   resources :users do
     get :autocomplete_user_first_name, :on => :collection
     get :autocomplete_user_last_name, :on => :collection
-    resources :challenges do
-      resources :guesses
-    end
   end
 
-  get '/challenges/latest', to: "challenges#latest_challenge"
-  
+  resources :challenges do
+    resources :guesses
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

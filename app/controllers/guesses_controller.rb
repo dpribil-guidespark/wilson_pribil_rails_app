@@ -33,9 +33,9 @@ class GuessesController < ApplicationController
 
     respond_to do |format|
       if @guess.save
-        format.html { redirect_to user_challenge_guesses_path(@user, @challenge), notice: 'Guess was successfully created.' }
+        format.html { redirect_to challenge_guesses_path(@challenge), notice: 'Guess was successfully created.' }
       else
-        format.html { redirect_to user_challenge_path(@user, @challenge) }
+        format.html { redirect_to challenge_path(@challenge) }
       end
     end
   end
@@ -54,8 +54,8 @@ class GuessesController < ApplicationController
     end
 
     def set_user_challenge
-      @user = User.find(params[:user_id])
       @challenge = Challenge.find(params[:challenge_id])
+      @user = @challenge.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

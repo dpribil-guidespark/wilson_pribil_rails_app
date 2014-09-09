@@ -3,26 +3,36 @@
 
     <%= form_for(:challenge, url: create_challenge_path) do |f| %>
 
-        <%= render partial: 'layouts/username', locals: {:form => f} %>
+    <%= render partial: 'layouts/username', locals: {:form => f} %>
 
-        <div class="col-xs-12 form-group">
-            <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>
-        </div>
+    <div class="col-xs-12 form-group">
+        <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>
+    </div>
 
-        <div class="col-xs-12 form-group">
-            <%= f.text_field :hint, :class => "form-control", :placeholder => "Any hints?" %>
-        </div>
+    <div class="col-xs-12 form-group">
+        <%= f.text_field :hint, :class => "form-control", :placeholder => "Any hints?" %>
+    </div>
 
-        <div class="col-xs-12 form-group">
-            <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
-        </div>
+    <div class="col-xs-12 form-group">
+        <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
+    </div>
 
-        <div class="col-xs-6 form-group">
-            <span class="input-group-btn">
-               <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
+    <div class="col-xs-6 form-group">
+        <p>Generate email? 
+            <span class="pull-right">
+                <input id="email_checkbox" type="checkbox" name="gg-checkbox"
+                data-size="large" data-on-text="<span class='fa fa-check fa-lg'></span>"
+                data-off-text="<span class='fa fa-close fa-lg'></span>" checked>
             </span>
-        </div>
+        </p>
+    </div>
 
-    <% end %>
-  </div>
+    <div class="col-xs-6 form-group">
+        <span class="input-group-btn">
+         <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
+     </span>
+ </div>
+
+ <% end %>
+</div>
 </div>

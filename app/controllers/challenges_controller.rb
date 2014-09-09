@@ -40,11 +40,18 @@ class ChallengesController < ApplicationController
 
     #find user by first and last name
     #@challenge.user = User.find_by(first_name: :user_first_name.capitalize, last_name: :user_last_name.capitalize)
-
+    if Challenge.all.count>1
+      @previous_challenge=Challenge.all[-2]   
+    else
+      @previous_challenge = nil
+    end
 
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to challenge_path(@challenge), notice: 'Challenge was successfully created.' }
+        format.html do
+          view_context.generate_mail(@previous_challenge, @challenge)
+          redirect_to challenge_path(@challenge), notice: 'Challenge was successfully created.' 
+        end
         format.json { render :show, status: :created, location: @challenge }
       else
         format.html { render :new }

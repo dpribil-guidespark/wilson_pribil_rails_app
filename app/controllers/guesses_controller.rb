@@ -5,7 +5,7 @@ class GuessesController < ApplicationController
   # GET /guesses
   # GET /guesses.json
   def index
-    @guesses = Guess.all
+    @guesses = @challenge.guesses
   end
 
   # POST /guesses
@@ -19,15 +19,11 @@ class GuessesController < ApplicationController
     #last_challenge = Challenge.where(created_at: current_time-(7.day)..current_time).first
     #@guess.challenge = last_challenge
 
-    #find user by first and last name
-    user_params = {first_name: params[:guess][:first_name].capitalize, last_name: params[:guess][:last_name].capitalize}
-    user = User.find_by(user_params)
-    user ||= User.create(user_params)
-    @guess.user = user
+    @guess.user = find_user_by_name params[:guess][:first_name].capitalize, params[:guess][:last_name].capitalize
 
     # set up the permanent cookie
-    cookies.permanent[:guess_game_first_name] = user.first_name
-    cookies.permanent[:guess_game_last_name] = user.last_name
+    cookies.permanent[:guess_game_first_name] = @guess.user.first_name
+    cookies.permanent[:guess_game_last_name] = @guess.user.last_name
 
 
     #set initial status to be wrong

@@ -1,17 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-}
-
 #logo {
   float: left;
-  margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 12px;
   font-weight: bold;
   line-height: 1;
 }

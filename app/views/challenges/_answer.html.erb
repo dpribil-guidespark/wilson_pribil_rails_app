@@ -1,19 +1,13 @@
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(:guess, url: challenge_guesses_path(@challenge)) do |f| %>
+<%= form_for(:guess, url: challenge_guesses_path(@challenge)) do |f| %>
 
-        <%= render partial: 'layouts/username', locals: {:form => f}%>
 
-        <div class="col-xs-12">
-          <div class="input-group">
-              <%= f.text_field :answer, :class => "form-control", :placeholder => "Your guess?" %>
-              <span class="input-group-btn">
-                   <%= f.submit "Submit", :class => 'btn btn-default' %>
-              </span>
-          </div>
-        </div>
+    <%= render partial: 'layouts/username', locals: {:form => f}%>
 
-    <% end %>
+      <div class="input-group col-md-12">
+          <%= f.text_field :answer, :class => "form-control", :placeholder => "Your guess?" %>
+          <span class="input-group-btn">
+               <%= f.submit "Submit", :class => 'btn btn-default' %>
+          </span>
+      </div>
 
-  </div>
-</div>
+<% end %>

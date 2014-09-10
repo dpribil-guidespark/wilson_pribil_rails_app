@@ -6,20 +6,18 @@
 </ul>
 <div id="my-tab-content" class="tab-content">
   <div class="tab-pane<% unless @tab || @tab ==  'challenge_tab'%> active<% end %>" id="challenge_tab">
-    <h1 class="text-center">Challenge of the week</h1>
+    <h1 class="text-center">The question for this week is...</h1>
 
     <blockquote>
       <h3><%= @challenge.question %></h3>
       <footer><%= "#{@user.first_name} #{@user.last_name}" %></footer>
     </blockquote>
-
-    <% if @challenge.hint %>
-        <p>
-          <strong>Hint:</strong>
-          <%= @challenge.hint %>
-        </p>
-    <% end %>
-
+        <% if @challenge.hint %>
+            <p>
+              <strong>Hint:</strong>
+              <%= @challenge.hint %>
+            </p>
+        <% end %>
     <%= render 'challenges/answer'%>
   </div>
   <div class="tab-pane<% if @tab ==  'guesses_tab'%> active<% end %>" id="guesses_tab">

@@ -1,28 +1,24 @@
-<div class="row">
-  <div class="span6 offset3">
-
     <%= form_for(:challenge, url: create_challenge_path) do |f| %>
 
         <%= render partial: 'layouts/username', locals: {:form => f} %>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>
+            </div>
 
-        <div class="col-xs-12 form-group">
-            <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>
+            <div class="col-md-12 form-group">
+                <%= f.text_field :hint, :class => "form-control", :placeholder => "Any hints?" %>
+            </div>
+
+            <div class="col-md-12 form-group">
+                <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
+            </div>
+
+            <div class="col-md-6">
+                <span class="input-group-btn">
+                   <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
+                </span>
+            </div>
+
         </div>
-
-        <div class="col-xs-12 form-group">
-            <%= f.text_field :hint, :class => "form-control", :placeholder => "Any hints?" %>
-        </div>
-
-        <div class="col-xs-12 form-group">
-            <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
-        </div>
-
-        <div class="col-xs-6 form-group">
-            <span class="input-group-btn">
-               <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
-            </span>
-        </div>
-
     <% end %>
-  </div>
-</div>

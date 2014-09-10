@@ -8,7 +8,7 @@ module ChallengesHelper
   def email_content(complete_challenge, new_challenge)
     email_string = "Dear Sparks,\n\n"
 
-    unless complete_challenge
+    if complete_challenge
       email_string += "Here are the results of the current \"Geek of the Week\" competition:\n\n"
 
       email_string += "Challenge: " + complete_challenge.question + "\n"
@@ -17,7 +17,7 @@ module ChallengesHelper
       email_string += "Setter: " + complete_challenge.user.first_name + " " + complete_challenge.user.last_name + "\n"
 
       if challenge_winners(complete_challenge).count > 0
-        email_string += "Last Challenge's " + "Geek".pluralize(challenge_winners(complete_challenge).count) + ": "
+        email_string += "Winning " + "Geek".pluralize(challenge_winners(complete_challenge).count) + ": "
         email_string += challenge_winners(complete_challenge).map {|guess| guess.user.first_name + " " + guess.user.last_name}.join(", ") + "\n\n"
       else
         email_string += "There were no Geek of the Weeks this week!\n\n"
@@ -27,7 +27,7 @@ module ChallengesHelper
     email_string += "Challenge: " + new_challenge.question + "\n"
     email_string += "Hint: " + new_challenge.hint + "\n" if new_challenge.hint
 
-    email_string += "\nYou can enter the current challenge by visiting WHATISTHELINK. Good luck!\n\n"
+    email_string += "\nYou can enter the current challenge by visiting " + request.host + url_for(challenges_latest_path).to_s + " - good luck!\n\n"
 
     email_string += new_challenge.user.first_name
 

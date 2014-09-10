@@ -18,16 +18,17 @@
     </div>
 
     <div class="col-xs-6 form-group">
-        <p>Generate email? 
+        <p class="lead" style='color: #777'><small>Generate Email?</small>
             <span class="pull-right">
                 <input id="email_checkbox" type="checkbox" name="gg-checkbox"
                 data-size="large" data-on-text="<span class='fa fa-check fa-lg'></span>"
-                data-off-text="<span class='fa fa-close fa-lg'></span>" checked>
+                data-off-text="<span class='fa fa-close fa-lg'></span>" data-label-text="<span class='fa fa-envelope-o fa-lg' style='color: #999'></span>"
+                checked>
             </span>
         </p>
     </div>
 
-    <div class="col-xs-6 form-group">
+    <div class="col-xs-6 form-group text-right">
         <span class="input-group-btn">
          <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
      </span>

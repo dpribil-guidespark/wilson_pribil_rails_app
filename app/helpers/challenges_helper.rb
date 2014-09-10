@@ -27,7 +27,7 @@ module ChallengesHelper
     email_string += "Challenge: " + new_challenge.question + "\n"
     email_string += "Hint: " + new_challenge.hint + "\n" if new_challenge.hint
 
-    email_string += "\nYou can enter the current challenge by visiting " + request.host + url_for(challenges_latest_path).to_s + " - good luck!\n\n"
+    email_string += "\nYou can enter the latest challenge by visiting " + request.host + url_for(challenges_latest_path) + " - good luck!\n\n"
 
     email_string += new_challenge.user.first_name
 
@@ -35,7 +35,7 @@ module ChallengesHelper
 
   end
   def generate_mail(complete_challenge, new_challenge)
-    return mail_to "test@test.com", "Company email", subject: "This week's Geek of the Week and New Challenge - "+Date.today.to_formatted_s(:rfc822), body: email_content(@challenge,Challenge.last)
+    return mail_to "test@test.com", "Company email", subject: "Geek of the Week - "+Date.today.to_formatted_s(:rfc822), body: email_content(@challenge,Challenge.last), id: "autoEmail"
   end
 
 

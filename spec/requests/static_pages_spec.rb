@@ -24,6 +24,35 @@ describe "Static pages" do
    end
   end
 
+  describe "Home page" do
+
+    describe "without a database should ask to create a new challenge" do
+      before { visit home_path }
+      it { should have_content('Create a New Challenge')}
+      it { should have_content('Create Challenge')}
+
+      it { should_not have_content('Challenge of the Week') }
+    end
+  end
+
+  describe "Home page" do
+
+    describe "with a database should show the latest challenge" do
+      before {@userA = User.create(first_name: "David", last_name: "Wilson")}
+      before {@challengeA = Challenge.create(question: "42", answer: "The Answer", user_id: @userA[:id])}
+      before {@challengeB = Challenge.create(question: "12345", answer: "sequence", user_id: @userA[:id])}
+      before { visit home_path }
+
+      it { should_not have_content('Create a New Challenge')}
+      it { should_not have_content('Create Challenge')}
+
+      it { should have_content('Challenge of the Week') }
+      it { should have_content(@challengeB.question) }
+    end
+
+  end
+
+
   describe "Leaderboard page" do
     before { visit leaderboard_path }
 
@@ -41,6 +70,37 @@ describe "Static pages" do
       it { should have_content('No completed challenges!')}
       it { should have_content('There are currently no geeks!')}
     end
+  end
+
+  describe "Interactive Leaderboard" do
+
+    describe "should contain the previous challenges question, answer and setter" do
+      let (:user) { FactoryGirl.create(:user) }
+      let (:challengeA) { FactoryGirl.create(:challenge) }
+      let (:challengeB) { FactoryGirl.create(:challenge) }
+      before { visit leaderboard_path }
+
+      it { should have_content(challengeA.question) }
+      it { should have_content(challengeA.answer) }
+
+      it { should_not have_content(challengeB.question) }
+      it { should_not have_content(challengeB.answer) }
+    end
+
+    describe "should contain the previous challenge hint if present" do
+      let (:user) { FactoryGirl.create(:user) }      
+      let (:challengeA) { FactoryGirl.create(:challenge) }
+      let (:challengeB) { FactoryGirl.create(:challenge) }
+      before { visit leaderboard_path }
+
+      it { should have_content(challengeA.hint) }
+      it { should_not have_content(challengeB.hint) }
+    end
+
+    describe "should contain the previous challenge winners, if any" do
+
+    end
+
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Previous Challenge <% if historic_challenge %> (<%= historic_challenge.created_at.strftime("%b %d, %Y")%>) <% end %>: </div>
+  <div class="panel-heading"><strong>Previous Challenge <% if historic_challenge %> (<%= historic_challenge.created_at.strftime("%b %d, %Y")%>) <% end %>:</strong> </div>
   <div class="panel-body">
     <% if challenge_winners(historic_challenge) %>
     <blockquote>
@@ -13,7 +13,7 @@
       <footer><%= historic_challenge.user.first_name %> <%= historic_challenge.user.last_name %></footer>
     </blockquote>
     <% if challenge_winners(historic_challenge).size > 0 %>
-    <h3>Last Challenge's <%= "Geek".pluralize(challenge_winners(historic_challenge).count)%>:</h3>
+    <h3>This Challenge's <%= "Geek".pluralize(challenge_winners(historic_challenge).count)%>:</h3>
     <ul>
       <% challenge_winners(historic_challenge).each do |guess| %>
       <li> <%= link_to "#{guess.user.first_name} #{guess.user.last_name}", user_path(guess.user) %> </li>

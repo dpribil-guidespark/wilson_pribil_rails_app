@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Leaderboard:</div>
+  <div class="panel-body">
+    <% if list_of_geeks %>
+    <div class="row">
+      <div class="span6 offset3">
+        <table class="table table-striped table-bordered">
+          <thead>  
+            <tr>
+              <th>Geek</th>
+              <th>Record</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% sorted_list_of_geeks.each do |geek| %>
+            <tr>
+              <td> <%= link_to "#{User.find(geek[:geek_id]).first_name} #{User.find(geek[:geek_id]).last_name}", user_path(User.find(geek[:geek_id])) %></td>
+              <td> <%= geek[:geek_count] %></td>
+            </tr>
+            <% end %> 
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% else %>
+    <blockquote>
+      <h3>There are currently no geeks!</h3>
+    </blockquote>
+    <% end %>
+  </div>
+</div>

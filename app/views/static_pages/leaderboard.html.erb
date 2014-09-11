@@ -1,67 +1,8 @@
 <% provide(:title, " | Leaderboard") %>
 <h1>Last Challenge and Leaderboard</h1>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">Last Challenge:</div>
-  <div class="panel-body">
-    <% if challenge_winners(@challenge) %>
-    <blockquote>
-      <h3><strong><%= @challenge.question %>:</strong> <%= @challenge.answer %></h3>
-      <% if @challenge.hint %>
-      <p>
-        <strong>Hint:</strong>
-        <%= @challenge.hint %>
-      </p>
-      <% end %>
-      <footer><%= @challenge.user.first_name %> <%= @challenge.user.last_name %></footer>
-    </blockquote>
-    <% if challenge_winners(@challenge).size > 0 %>
-    <h3>Last Challenge's <%= "Geek".pluralize(challenge_winners(@challenge).count)%>:</h3>
-    <ul>
-      <% challenge_winners(@challenge).each do |guess| %>
-      <li> <%= link_to "#{guess.user.first_name} #{guess.user.last_name}", user_path(guess.user) %> </li>
-      <% end %> 
-    </ul>
-    <% else %>
-      <h3>No winners for this challenge!</h3>
-    <% end %>
-    <% else %>
-    <blockquote>
-      <h3>No completed challenges!</h3>
-    </blockquote>
-    <% end %>
-  </div>
-</div>
+<%= render 'previous_challenge' %>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">Leaderboard:</div>
-  <div class="panel-body">
-    <% if list_of_geeks %>
-    <div class="row">
-      <div class="span6 offset3">
-        <table class="table table-striped table-bordered">
-          <thead>  
-            <tr>
-              <th>Geek</th>
-              <th>Record</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% sorted_list_of_geeks.each do |geek| %>
-            <tr>
-              <td> <%= link_to "#{User.find(geek[:geek_id]).first_name} #{User.find(geek[:geek_id]).last_name}", user_path(User.find(geek[:geek_id])) %></td>
-              <td> <%= geek[:geek_count] %></td>
-            </tr>
-            <% end %> 
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <% else %>
-    <blockquote>
-      <h3>There are currently no geeks!</h3>
-    </blockquote>
-    <% end %>
-  </div>
-</div>
+<%= render 'user_leaderboard' %>
+
 <div><%= link_to 'Back to current challenge', home_path, :class => "btn btn-default"%></div>

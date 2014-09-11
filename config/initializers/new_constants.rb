@@ -1,5 +1,18 @@
 STATUS_WRONG = 0
 STATUS_RIGHT = 1
+
+# department values
+DEPARTMENT_CONSTANTS = [
+    {id: 0, name: 'CEO'},
+    {id: 1, name: 'Content'},
+    {id: 2, name: 'Customer Success'},
+    {id: 3, name: 'Engineering'},
+    {id: 4, name: 'G&A'},
+    {id: 5, name: 'Marketing'},
+    {id: 6, name: 'Product management'},
+    {id: 7, name: 'Sales'}
+]
+
 USERNAME = "user"
 PASSWORD = "password"
 HOST_ADDRESS = "localhost"

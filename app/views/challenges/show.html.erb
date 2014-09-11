@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
   <li <% unless @tab || @tab ==  'challenge_tab'%>class="active"<% end %>><a href="#challenge_tab" data-toggle="tab">Challenge</a></li>
   <li <% if @tab ==  'guesses_tab'%>class="active"<% end %>><a href="#guesses_tab" data-toggle="tab">Guesses</a></li>

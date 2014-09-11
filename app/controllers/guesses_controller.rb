@@ -33,7 +33,8 @@ class GuessesController < ApplicationController
 
     respond_to do |format|
       if @guess.save
-        format.html { redirect_to challenge_path(@challenge, tab: 'guesses_tab'), notice: 'Guess was successfully created.' }
+        flash[:notice] = 'Guess was successfully created.'
+        format.html { redirect_to challenge_path(@challenge, tab: 'guesses_tab') }
       else
         format.html { redirect_to challenge_path(@challenge) }
       end
@@ -43,7 +44,8 @@ class GuessesController < ApplicationController
   def destroy
     @guess.destroy
     respond_to do |format|
-      format.html { redirect_to challenge_guesses_path(@challenge), notice: 'Challenge was successfully destroyed.' }
+      flash[:notice] = 'Challenge was successfully destroyed.'
+      format.html { redirect_to challenge_guesses_path(@challenge) }
     end
   end
 

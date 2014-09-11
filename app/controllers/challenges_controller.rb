@@ -45,11 +45,11 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to challenge_path(@challenge), notice: 'Challenge was successfully created.' }
-        format.json { render :show, status: :created, location: @challenge }
+        flash[:notice] = 'Challenge was successfully created.'
+        format.html { redirect_to challenge_path(@challenge)}
       else
+        flash[:alert] = 'The question with the same answer was asked before!'
         format.html { render :new }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,11 +59,10 @@ class ChallengesController < ApplicationController
   def update
     respond_to do |format|
       if @challenge.update(challenge_params)
-        format.html { redirect_to challenge_path(@challenge), notice: 'Challenge was successfully updated.' }
-        format.json { render :show, status: :ok, location: @challenge }
+        flash[:notice] = 'Challenge was successfully updated.'
+        format.html { redirect_to challenge_path(@challenge)}
       else
         format.html { render :edit }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,7 +72,8 @@ class ChallengesController < ApplicationController
   def destroy
     @challenge.destroy
     respond_to do |format|
-      format.html { redirect_to challenges_path, notice: 'Challenge was successfully destroyed.' }
+      flash[:notice] = 'Challenge was successfully destroyed.'
+      format.html { redirect_to challenges_path}
     end
   end
 

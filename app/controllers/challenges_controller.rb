@@ -51,6 +51,7 @@ class ChallengesController < ApplicationController
     respond_to do |format|
       if @challenge.save
         flash[:notice] = 'Challenge was successfully created.'
+        flash[:send_notification_email] = params[:challenge][:send_notification_email] == "true"
         format.html { redirect_to challenge_path(@challenge)}
       else
         flash[:alert] = 'The question with the same answer was asked before!'
@@ -100,4 +101,5 @@ class ChallengesController < ApplicationController
     def get_latest_challenge
       @challenge = Challenge.last
     end
+
 end

@@ -13,25 +13,23 @@
         <div class="col-md-12 form-group">
             <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
         </div>
-        <div class="col-md-6 form-group">
-            <p class="lead" style='color: #777'><small style='padding-right:1em'>Generate Email?   </small>
+
+        <%= f.hidden_field(:send_notification_email, value: 'true') %>
+        <div class="col-md-12 form-group">
                 <span>
-                    <input id="email_checkbox" type="checkbox" name="gg-checkbox"
+                    <input id="email_checkbox" type="checkbox" name="gg-checkbox-mail"
                     data-size="large" data-on-text="<span class='fa fa-check fa-lg'></span>"
                     data-off-text="<span class='fa fa-close fa-lg'></span>" data-label-text="<span class='fa fa-envelope-o fa-lg' style='color: #999'></span>"
                     checked>
                 </span>
-            </p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
+      <div class="col-md-12">
             <span class="input-group-btn">
              <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
          </span>
-     </div>
+      </div>
+    </div>
 
- </div>
  <% end %>
 
 

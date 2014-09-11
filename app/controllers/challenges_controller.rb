@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  http_basic_authenticate_with name: "user", password: "password", only: [:new, :create]
+  http_basic_authenticate_with name: USERNAME, password: PASSWORD, only: [:new, :create]
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:edit, :update, :show]
 

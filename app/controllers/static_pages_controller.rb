@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
     if Challenge.all.count>1
       @challenge=Challenge.all[-2]   
       @guesses=Guess.all
-      @correct_guesses = @guesses.where(:status => STATUS_RIGHT)
+      @correct_guesses = !@guesses.empty? ? @guesses.where(:status => STATUS_RIGHT) : nil
     else
       @challenge = nil
       @guesses = nil

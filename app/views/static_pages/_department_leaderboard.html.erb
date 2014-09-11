@@ -14,7 +14,7 @@
           <tbody>
             <% sorted_list_of_depts.each do |dept| %>
             <tr>
-              <td> <%= "INCLUDE DEPARTMENT NAME HERE" %></td>
+              <td> <%= Guess.get_department_name(dept[:id]) %></td>
               <td> <%= dept[:count] %></td>
             </tr>
             <% end %> 

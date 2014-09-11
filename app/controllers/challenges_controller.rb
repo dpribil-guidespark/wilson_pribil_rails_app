@@ -50,7 +50,7 @@ class ChallengesController < ApplicationController
     respond_to do |format|
       if @challenge.save
         format.html do
-          view_context.generate_mail(@previous_challenge, @challenge)
+          #generate_mail(@previous_challenge, @challenge)
           redirect_to challenge_path(@challenge), notice: 'Challenge was successfully created.' 
         end
         format.json { render :show, status: :created, location: @challenge }

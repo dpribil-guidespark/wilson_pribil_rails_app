@@ -31,7 +31,7 @@ module ChallengesHelper
     email_string += "Challenge: " + new_challenge.question + "\n"
     email_string += "Hint: " + new_challenge.hint + "\n" if new_challenge.hint
 
-    email_string += "\nYou can enter the latest challenge by visiting " + request.host + url_for(challenges_latest_path) + " - good luck!\n\n"
+    email_string += "\nYou can enter the latest challenge by visiting http://" + request.host + url_for(challenges_latest_path) + " - good luck!\n\n"
 
     email_string += new_challenge.user.first_name
 

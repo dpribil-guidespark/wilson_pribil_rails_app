@@ -1,7 +1,6 @@
 $(function () {
 
     $("[name='gg-checkbox']").bootstrapSwitch().on('switchChange.bootstrapSwitch', function (e, data) {
-
         $.ajax({
             type: "POST",
             url: '/guesses/update_guess_status',
@@ -12,7 +11,6 @@ $(function () {
             },
             dataType: 'json',
             complete: function (data) {
-                console.log($(data).find('input'));
             }
         });
     });

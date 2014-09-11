@@ -2,3 +2,4 @@ STATUS_WRONG = 0
 STATUS_RIGHT = 1
 USERNAME = "user"
 PASSWORD = "password"
+HOST_ADDRESS = "localhost"

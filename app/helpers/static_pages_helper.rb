@@ -30,12 +30,6 @@ module StaticPagesHelper
     end
   end
 
-  def winning_users_and_departments
-    win_guesses = Guess.where(:status => STATUS_RIGHT).order("user_id desc")
-
-  end
-
-
   def list_of_geeks
     list_of_creator(:user_id,"user_id")
   end

@@ -10,3 +10,23 @@
   font-weight: bold;
   line-height: 1;
 }
+
+@media all {
+
+  .footer-left {
+  }
+  .footer-right {
+    text-align: right;
+  }
+}
+
+@media(max-width: $screen-xs-max){
+
+  .footer-left {
+    text-align: center;
+  }
+  .footer-right {
+    text-align: center;
+  }
+}
+

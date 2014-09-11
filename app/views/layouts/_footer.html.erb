@@ -1,5 +1,12 @@
 <footer>
-  <p><%= link_to image_tag("logo.png", :alt => "Guidespark Logo", height: '30'), "http://www.guidespark.com", target: '_blank' %> &copy;2014
-  <span class="pull-right">
-    <%= link_to "Home", home_path %> | <%= link_to "About", about_path %> | <%= link_to "Leaderboard", leaderboard_path %><span></p>
+  <div class="container">
+    <div class="row">
+      <div class="footer-left col-sm-6">
+        <%= link_to image_tag("logo.png", :alt => "Guidespark Logo", height: '30'), "http://www.guidespark.com", target: '_blank' %> &copy;2014
+      </div>
+      <div class="footer-right col-sm-6">
+        <%= link_to "Home", home_path %> | <%= link_to "About", about_path %>
+        | <%= link_to "Leaderboard", leaderboard_path %></div>
+    </div>
+  </div>
 </footer>

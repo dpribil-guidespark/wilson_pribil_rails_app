@@ -6,8 +6,11 @@
 <% else %>
 <% historic_challenge ||=  (Challenge.all.count>1 ? Challenge.all[-2] : nil) %>
 <% end %>
+
 <%= render partial: 'previous_challenge', locals: {historic_challenge: historic_challenge} %>
 
 <%= render 'user_leaderboard' %>
+
+<%#= render 'department_leaderboard' %>
 
 <div><%= link_to 'Back to current challenge', home_path, :class => "btn btn-default"%></div>

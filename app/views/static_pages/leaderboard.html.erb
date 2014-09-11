@@ -15,12 +15,16 @@
       <% end %>
       <footer><%= @challenge.user.first_name %> <%= @challenge.user.last_name %></footer>
     </blockquote>
+    <% if challenge_winners(@challenge).size > 0 %>
     <h3>Last Challenge's <%= "Geek".pluralize(challenge_winners(@challenge).count)%>:</h3>
     <ul>
       <% challenge_winners(@challenge).each do |guess| %>
       <li> <%= link_to "#{guess.user.first_name} #{guess.user.last_name}", user_path(guess.user) %> </li>
       <% end %> 
     </ul>
+    <% else %>
+      <h3>No winners for this challenge!</h3>
+    <% end %>
     <% else %>
     <blockquote>
       <h3>No completed challenges!</h3>

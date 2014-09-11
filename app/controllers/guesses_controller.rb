@@ -25,7 +25,7 @@ class GuessesController < ApplicationController
     # set up the permanent cookie
     cookies.permanent[:guess_game_first_name] = @guess.user.first_name
     cookies.permanent[:guess_game_last_name] = @guess.user.last_name
-
+    cookies.permanent[:guess_game_department] = @guess.department
 
     #set initial status to be wrong
     @guess.status = STATUS_WRONG
@@ -69,6 +69,6 @@ class GuessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guess_params
-      params.require(:guess).permit(:answer, :status)
+      params.require(:guess).permit(:answer, :status, :department)
     end
 end

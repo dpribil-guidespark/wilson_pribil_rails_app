@@ -39,7 +39,7 @@ module ChallengesHelper
 
   end
   def generate_mail
-    return mail_to "test@test.com", "Company email", subject: "Geek of the Week - "+Date.today.to_formatted_s(:rfc822), body: email_content(@challenge,Challenge.last), id: "autoEmail"
+    return mail_to "test@test.com", "Company email", subject: "Geek of the Week - "+Date.today.to_formatted_s(:rfc822), body: email_content(Challenge.last.previous,Challenge.last), id: "autoEmail"
   end
 
 

@@ -1,7 +1,7 @@
 <%= form_for(:guess, url: challenge_guesses_path(@challenge)) do |f| %>
 
 
-    <%= render partial: 'layouts/username', locals: {:form => f}%>
+    <%= render partial: 'layouts/username', locals: {:form => f, :show_department => true}%>
 
       <div class="input-group col-md-12">
           <%= f.text_field :answer, :class => "form-control", :placeholder => "Your guess?" %>

@@ -1,6 +1,6 @@
     <%= form_for(:challenge, url: create_challenge_path) do |f| %>
 
-    <%= render partial: 'layouts/username', locals: {:form => f} %>
+    <%= render partial: 'layouts/username', locals: {:form => f, :show_department => false} %>
     <div class="row">
         <div class="col-md-12 form-group">
             <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>

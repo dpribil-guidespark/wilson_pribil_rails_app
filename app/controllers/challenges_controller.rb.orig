@@ -47,11 +47,18 @@ class ChallengesController < ApplicationController
       @previous_challenge = nil
     end
 
-
     respond_to do |format|
       if @challenge.save
+<<<<<<< HEAD
         flash[:notice] = 'Challenge was successfully created.'
         format.html { redirect_to challenge_path(@challenge)}
+=======
+        format.html do
+          #generate_mail(@previous_challenge, @challenge)
+          redirect_to challenge_path(@challenge), notice: 'Challenge was successfully created.' 
+        end
+        format.json { render :show, status: :created, location: @challenge }
+>>>>>>> 11_add_email
       else
         flash[:alert] = 'The question with the same answer was asked before!'
         format.html { render :new }

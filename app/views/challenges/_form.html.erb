@@ -1,24 +1,38 @@
     <%= form_for(:challenge, url: create_challenge_path) do |f| %>
 
-        <%= render partial: 'layouts/username', locals: {:form => f} %>
-        <div class="row">
-            <div class="col-md-12 form-group">
-                <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>
-            </div>
-
-            <div class="col-md-12 form-group">
-                <%= f.text_field :hint, :class => "form-control", :placeholder => "Any hints?" %>
-            </div>
-
-            <div class="col-md-12 form-group">
-                <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
-            </div>
-
-            <div class="col-md-6">
-                <span class="input-group-btn">
-                   <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
-                </span>
-            </div>
-
+    <%= render partial: 'layouts/username', locals: {:form => f} %>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <%= f.text_field :question, :class => "form-control", :placeholder => "What is the question?" %>
         </div>
-    <% end %>
+
+        <div class="col-md-12 form-group">
+            <%= f.text_field :hint, :class => "form-control", :placeholder => "Any hints?" %>
+        </div>
+
+        <div class="col-md-12 form-group">
+            <%= f.text_field :answer, :class => "form-control", :placeholder => "The answer is...?" %>
+        </div>
+        <div class="col-md-6 form-group">
+            <p class="lead" style='color: #777'><small style='padding-right:1em'>Generate Email?   </small>
+                <span>
+                    <input id="email_checkbox" type="checkbox" name="gg-checkbox"
+                    data-size="large" data-on-text="<span class='fa fa-check fa-lg'></span>"
+                    data-off-text="<span class='fa fa-close fa-lg'></span>" data-label-text="<span class='fa fa-envelope-o fa-lg' style='color: #999'></span>"
+                    checked>
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <span class="input-group-btn">
+             <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
+         </span>
+     </div>
+
+ </div>
+ <% end %>
+
+
+

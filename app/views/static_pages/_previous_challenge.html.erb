@@ -16,7 +16,7 @@
     <h3>This Challenge's <%= "Geek".pluralize(challenge_winners(historic_challenge).count)%>:</h3>
     <ul>
       <% challenge_winners(historic_challenge).each do |guess| %>
-      <li> <%= link_to "#{guess.user.first_name} #{guess.user.last_name}", user_path(guess.user) %> </li>
+      <li> <%= "#{guess.user.first_name} #{guess.user.last_name}" %> </li>
       <% end %> 
     </ul>
     <% else %>

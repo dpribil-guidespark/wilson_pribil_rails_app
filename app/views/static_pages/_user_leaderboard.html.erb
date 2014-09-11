@@ -14,7 +14,7 @@
           <tbody>
             <% sorted_list_of_geeks.each do |geek| %>
             <tr>
-              <td> <%= link_to "#{User.find(geek[:geek_id]).first_name} #{User.find(geek[:geek_id]).last_name}", user_path(User.find(geek[:geek_id])) %></td>
+              <td> <%= "#{User.find(geek[:geek_id]).first_name} #{User.find(geek[:geek_id]).last_name}" %></td>
               <td> <%= geek[:geek_count] %></td>
             </tr>
             <% end %> 

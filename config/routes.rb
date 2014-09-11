@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'
 
-  resources :users do
+  resources :users, :except => [:index, :show, :edit, :destroy] do
     get :autocomplete_user_first_name, :on => :collection
     get :autocomplete_user_last_name, :on => :collection
   end

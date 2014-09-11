@@ -1,21 +1,21 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Last Challenge:</div>
+  <div class="panel-heading">Previous Challenge <% if historic_challenge %> (<%= historic_challenge.created_at.strftime("%b %d, %Y")%>) <% end %>: </div>
   <div class="panel-body">
-    <% if challenge_winners(@challenge) %>
+    <% if challenge_winners(historic_challenge) %>
     <blockquote>
-      <h3><strong><%= @challenge.question %>:</strong> <%= @challenge.answer %></h3>
-      <% if @challenge.hint %>
+      <h3><strong><%= historic_challenge.question %>:</strong> <%= historic_challenge.answer %></h3>
+      <% if historic_challenge.hint %>
       <p>
         <strong>Hint:</strong>
-        <%= @challenge.hint %>
+        <%= historic_challenge.hint %>
       </p>
       <% end %>
-      <footer><%= @challenge.user.first_name %> <%= @challenge.user.last_name %></footer>
+      <footer><%= historic_challenge.user.first_name %> <%= historic_challenge.user.last_name %></footer>
     </blockquote>
-    <% if challenge_winners(@challenge).size > 0 %>
-    <h3>Last Challenge's <%= "Geek".pluralize(challenge_winners(@challenge).count)%>:</h3>
+    <% if challenge_winners(historic_challenge).size > 0 %>
+    <h3>Last Challenge's <%= "Geek".pluralize(challenge_winners(historic_challenge).count)%>:</h3>
     <ul>
-      <% challenge_winners(@challenge).each do |guess| %>
+      <% challenge_winners(historic_challenge).each do |guess| %>
       <li> <%= link_to "#{guess.user.first_name} #{guess.user.last_name}", user_path(guess.user) %> </li>
       <% end %> 
     </ul>
@@ -28,4 +28,27 @@
     </blockquote>
     <% end %>
   </div>
+
+  <% if historic_challenge %>
+  <div class="panel-footer">
+    <div class="btn-group">
+      <% if historic_challenge == Challenge.first %>
+        <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-double-left fa-lg'></span></button>
+        <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-left fa-lg'       ></span></button>
+      <% else %>
+        <%= link_to "<span class='fa fa-angle-double-left fa-lg'></span>".html_safe, leaderboard_path(historic_challenge: Challenge.first),             class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-left fa-lg'></span>".html_safe,        leaderboard_path(historic_challenge: historic_challenge.previous), class: "btn btn-primary" %>
+      <% end %>
+      <% if Challenge.all.count==1 || historic_challenge == Challenge.all[-2] %>
+        <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-right fa-lg'       ></span></button>
+        <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-double-right fa-lg'></span></button>
+      <% else %>
+        <%= link_to "<span class='fa fa-angle-right fa-lg'></span>".html_safe,        leaderboard_path(historic_challenge: historic_challenge.next), class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-double-right fa-lg'></span>".html_safe, leaderboard_path(historic_challenge: Challenge.all[-2]),       class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
 </div>
+

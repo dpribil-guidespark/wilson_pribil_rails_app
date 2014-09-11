@@ -1,7 +1,9 @@
 <% provide(:title, " | Leaderboard") %>
 <h1>Last Challenge and Leaderboard</h1>
 
-<%= render 'previous_challenge' %>
+<% historic_challenge = params.has_key?(:historic_challenge) ? Challenge.find(params[:historic_challenge]) : nil %>
+<% historic_challenge ||=  (Challenge.all.count>1 ? Challenge.all[-2] : nil) %>
+<%= render partial: 'previous_challenge', locals: {historic_challenge: historic_challenge} %>
 
 <%= render 'user_leaderboard' %>
 

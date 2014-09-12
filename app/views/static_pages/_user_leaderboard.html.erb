@@ -14,7 +14,11 @@
           <tbody>
             <% sorted_list_of_geeks.each do |geek| %>
             <tr>
-              <td> <%= "#{User.find(geek[:id]).first_name} #{User.find(geek[:id]).last_name}" %></td>
+              <td> <%= "#{User.find(geek[:id]).first_name} #{User.find(geek[:id]).last_name}" %>
+                <% geek_depts(geek).each do |dep_name| %>
+                  <span class="badge"><%= dep_name %> </span>
+                <% end %>
+              </td>
               <td> <%= geek[:count] %></td>
             </tr>
             <% end %> 

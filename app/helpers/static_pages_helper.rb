@@ -47,5 +47,38 @@ module StaticPagesHelper
     return sorted_list_of_creator(list_of_depts)
   end
 
+  def list_of_geeks_and_depts
+    g_d_list = []
+    geek_list = self.list_of_geeks
+
+    geek_list.each do |g|
+      tmp_hash = {}
+      tmp_hash[:id] = g[:id]
+      tmp_hash[:dept] = []
+      g_d_list << tmp_hash
+    end
+
+    correct_g = !Guess.all.empty? ? Guess.all.where(:status => STATUS_RIGHT) : nil
+
+    correct_g.each do |cg|
+      tmp_hash = g_d_list.detect{|g| g[:id] == cg[:user_id]}
+      dept_name = cg.department
+      tmp_hash[:dept].push(dept_name) unless tmp_hash[:dept].include?(dept_name)
+    end
+
+    return g_d_list
+  end
+
+  def geek_depts(geek)
+    if !@geeks_depts_list
+      @geek_dept_list = list_of_geeks_and_depts
+    end
+
+    tmp_hash = @geek_dept_list.detect{|g| g[:id] == geek[:id]}
+
+    return tmp_hash[:dept].map{|d| Guess.get_department_name(d) }
+
+  end
+
 
 end

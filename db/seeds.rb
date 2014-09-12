@@ -87,7 +87,7 @@ guesses_3 = [{answer: "Golden Ratio", user_id: 1, status: 1},
 
 guesses_3.each do |g|
   g[:challenge_id] = 3
-  g[:department] = 3
+  g[:department] = 6
   Guess.create(g)
 end
 
@@ -99,6 +99,6 @@ guesses_5 = [{answer: "Boston Office Address", user_id: 6, status: 0},
 
 guesses_5.each do |g|
   g[:challenge_id] = 5
-  g[:department] = 3
+  g[:department] = 2
   Guess.create(g)
 end

@@ -8,14 +8,14 @@
 
     <blockquote>
       <h3><%= @challenge.question %></h3>
+      <% if @challenge.hint %>
+          <p>
+            <strong>Hint:</strong>
+            <%= @challenge.hint %>
+          </p>
+      <% end %>
       <footer><%= "#{@user.first_name} #{@user.last_name}" %></footer>
     </blockquote>
-        <% if @challenge.hint %>
-            <p>
-              <strong>Hint:</strong>
-              <%= @challenge.hint %>
-            </p>
-        <% end %>
     <%= render 'challenges/answer'%>
   </div>
   <div class="tab-pane<% if @tab ==  'guesses_tab'%> active<% end %>" id="guesses_tab">

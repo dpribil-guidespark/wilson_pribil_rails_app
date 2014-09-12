@@ -1,5 +1,5 @@
 <% provide(:title, " | Leaderboard") %>
-<h1>Previous Challenges and Leaderboard</h1>
+<h1 class="text-center">Previous Challenges and Leaderboard</h1>
 
 <% if params.has_key?(:historic_challenge) && Challenge.exists?(id: params[:historic_challenge]) %>
 <% historic_challenge =  Challenge.find(params[:historic_challenge]) %>

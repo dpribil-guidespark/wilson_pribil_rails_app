@@ -31,7 +31,7 @@
 
   <% if historic_challenge %>
   <div class="panel-footer">
-    <div class="btn-group">
+    <div id="leaderboards-panel-footer" class="btn-group">
       <% if historic_challenge == Challenge.first %>
         <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-double-left fa-lg'></span></button>
         <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-left fa-lg'       ></span></button>
@@ -40,11 +40,11 @@
         <%= link_to "<span class='fa fa-angle-left fa-lg'></span>".html_safe,        leaderboard_path(historic_challenge: historic_challenge.previous), class: "btn btn-primary" %>
       <% end %>
       <% if Challenge.all.count==1 || historic_challenge == Challenge.all[-2] %>
-        <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-right fa-lg'       ></span></button>
-        <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-double-right fa-lg'></span></button>
+        <button type="button" class="btn btn-primary disabled pull-right"><span class='fa fa-angle-right fa-lg'       ></span></button>
+        <button type="button" class="btn btn-primary disabled pull-right"><span class='fa fa-angle-double-right fa-lg'></span></button>
       <% else %>
-        <%= link_to "<span class='fa fa-angle-right fa-lg'></span>".html_safe,        leaderboard_path(historic_challenge: historic_challenge.next), class: "btn btn-primary" %>
-        <%= link_to "<span class='fa fa-angle-double-right fa-lg'></span>".html_safe, leaderboard_path(historic_challenge: Challenge.all[-2]),       class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-right fa-lg'></span>".html_safe,        leaderboard_path(historic_challenge: historic_challenge.next), class: "btn btn-primary pull-right" %>
+        <%= link_to "<span class='fa fa-angle-double-right fa-lg'></span>".html_safe, leaderboard_path(historic_challenge: Challenge.all[-2]),       class: "btn btn-primary pull-right" %>
       <% end %>
     </div>
   </div>

@@ -1,9 +1,14 @@
-<ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
-  <li <% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%>class="active"<% end %>><a href="#challenge_tab" data-toggle="tab">Challenge</a></li>
-  <li <% if flash[:tab] ==  'guesses_tab'%>class="active"<% end %>>
-    <a href="#guesses_tab" data-toggle="tab">Guesses <span class="badge"><%= @challenge.guesses.size %></span></a>
-  </li>
-</ul>
+<% ['nav-pills nav-justified', 'nav-tabs'].each_with_index do |v,i|%>
+    <ul id="tabs-<%= i %>" class="nav <%= v %>" data-tabs="tabs">
+      <li class="col-xs-6<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>">
+        <a href="#challenge_tab" data-toggle="tab">Challenge</a>
+      </li>
+        <li class="col-xs-6<% if flash[:tab] ==  'guesses_tab'%> active<% end %>">
+        <a href="#guesses_tab" data-toggle="tab">Guesses <span class="badge"><%= @challenge.guesses.size %></span></a>
+      </li>
+    </ul>
+<% end %>
+
 <div id="my-tab-content" class="tab-content">
   <div class="tab-pane<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>" id="challenge_tab">
     <h1 class="text-center">The question for this week is...</h1>

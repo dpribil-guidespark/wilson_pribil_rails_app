@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
+//= require twitter/bootstrap/rails/confirm
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require bootstrap-switch

@@ -25,7 +25,7 @@
         </div>
       <div class="col-md-12">
             <span class="input-group-btn">
-             <%= f.submit "Start challenge!", :class => 'btn btn-primary' %>
+             <%= f.submit "Start challenge!", :class => 'btn btn-primary', data: { 'confirm' => 'This will end the current challenge. Are you sure?', 'confirm-fade' => true, 'confirm-title' => 'Start a new challenge'} %>
          </span>
       </div>
     </div>

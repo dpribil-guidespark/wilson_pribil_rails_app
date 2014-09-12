@@ -20,7 +20,7 @@
           <li class="dropdown" data-no-collapse="true">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Evaluate guesses', challenge_guesses_path(@challenge) %></li>
+                <li><%= link_to 'Evaluate guesses', guesses_path %></li>
                 <li><%= link_to 'New Challenge', new_challenge_path, data: {confirm: 'This will end the current challenge. Are you sure?'} %></li>
               </ul>
             </li>

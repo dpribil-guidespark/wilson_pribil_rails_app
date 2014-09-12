@@ -16,7 +16,9 @@ module ChallengesHelper
       email_string += "Here are the results of the current \"Geek of the Week\" competition:\n\n"
 
       email_string += "Challenge: " + complete_challenge.question + "\n"
-      email_string += "Hint: " + complete_challenge.hint + "\n" if complete_challenge.hint
+      if !new_challenge.hint.blank?
+        email_string += "Hint: " + complete_challenge.hint + "\n"
+      end
       email_string += "Answer: " + complete_challenge.answer + "\n"
       email_string += "Setter: " + complete_challenge.user.first_name + " " + complete_challenge.user.last_name + "\n"
 
@@ -29,8 +31,10 @@ module ChallengesHelper
     end
     email_string += "Here is the new \"Geek of the Week\" challenge:\n"
     email_string += "Challenge: " + new_challenge.question + "\n"
-    email_string += "Hint: " + new_challenge.hint + "\n" if new_challenge.hint
-
+    if !new_challenge.hint.blank?
+      email_string += "Hint: " + new_challenge.hint + "\n" 
+    end
+    
     email_string += "\nYou can enter the latest challenge by visiting http://" + request.host + url_for(challenges_latest_path) + " - good luck!\n\n"
 
     email_string += new_challenge.user.first_name

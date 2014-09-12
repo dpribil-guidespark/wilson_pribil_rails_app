@@ -1,3 +1,38 @@
 // Place all the styles related to the Challenges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#tabs-1 {
+
+  li {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  };
+
+};
+
+@media(min-width: $screen-xs-max){
+
+  #tabs-0 {
+    display: block;
+  };
+
+  #tabs-1 {
+    display: none;
+  };
+}
+
+@media(max-width: $screen-xs-max){
+
+  #tabs-0 {
+    display: none;
+  };
+
+  #tabs-1 {
+    display: block;
+  };
+
+}

@@ -49,8 +49,10 @@ gem 'sprockets'
 
 gem 'rails3-jquery-autocomplete'
 
-gem "bootstrap-switch-rails"
-gem "font-awesome-rails"
+gem 'bootstrap-switch-rails'
+gem 'font-awesome-rails'
+
+gem 'twitter-bootstrap-rails-confirm', github: 'bluerail/twitter-bootstrap-rails-confirm', branch: 'bootstrap3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

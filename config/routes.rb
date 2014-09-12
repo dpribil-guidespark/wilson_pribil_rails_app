@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'leaderboard', to: 'static_pages#leaderboard'
 
-  get 'challenges/latest', to: 'challenges#latest_challenge'
+  get 'challenge', to: 'challenges#latest_challenge'
 
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'
@@ -16,9 +16,8 @@ Rails.application.routes.draw do
     get :autocomplete_user_last_name, :on => :collection
   end
 
-  resources :challenges do
-    resources :guesses
-  end
+  resources :challenges, :only => [:new, :create, :latest_challenge]
+  resources :guesses, :except => [:show, :edit]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

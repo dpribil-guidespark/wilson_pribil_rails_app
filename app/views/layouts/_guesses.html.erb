@@ -25,7 +25,7 @@
                        data-guess-id=<%= guess.id %>>
             </td>
             <td>
-              <%= link_to '', challenge_guess_path(guess.challenge, guess), :class => "btn btn-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to '', guess_path(guess), :class => "btn btn-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
             <% end %>
           </tr>

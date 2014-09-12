@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
   http_basic_authenticate_with name: USERNAME, password: PASSWORD, only: [:new, :create]
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :latest_challenge]
+  before_action :set_user, only: [:edit, :update, :show, :latest_challenge]
 
   # GET /challenges
   # GET /challenges.json
@@ -12,7 +12,6 @@ class ChallengesController < ApplicationController
   # GET /challenges/1
   # GET /challenges/1.json
   def show
-    @tab = params[:tab]
   end
 
   # GET /challenges/new
@@ -24,8 +23,7 @@ class ChallengesController < ApplicationController
   end
 
   def latest_challenge
-    @challenge = get_latest_challenge
-    redirect_to challenge_path(@challenge)
+    render 'show'
   end
 
   # POST /challenges
@@ -52,7 +50,7 @@ class ChallengesController < ApplicationController
       if @challenge.save
         flash[:notice] = 'Challenge was successfully created.'
         flash[:send_notification_email] = params[:challenge][:send_notification_email] == "true"
-        format.html { redirect_to challenge_path(@challenge)}
+        format.html { redirect_to challenge_path}
       else
         flash[:alert] = 'The question with the same answer was asked before!'
         format.html { render :new }
@@ -66,7 +64,7 @@ class ChallengesController < ApplicationController
     respond_to do |format|
       if @challenge.update(challenge_params)
         flash[:notice] = 'Challenge was successfully updated.'
-        format.html { redirect_to challenge_path(@challenge)}
+        format.html { redirect_to challenge_path}
       else
         format.html { render :edit }
       end
@@ -86,7 +84,7 @@ class ChallengesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
-      @challenge = Challenge.find(params[:id])
+      @challenge = get_latest_challenge
     end
 
     def set_user

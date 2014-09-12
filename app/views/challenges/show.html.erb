@@ -1,6 +1,8 @@
 <ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
   <li <% unless @tab || @tab ==  'challenge_tab'%>class="active"<% end %>><a href="#challenge_tab" data-toggle="tab">Challenge</a></li>
-  <li <% if @tab ==  'guesses_tab'%>class="active"<% end %>><a href="#guesses_tab" data-toggle="tab">Guesses</a></li>
+  <li <% if @tab ==  'guesses_tab'%>class="active"<% end %>>
+    <a href="#guesses_tab" data-toggle="tab">Guesses <span class="badge"><%= @challenge.guesses.size %></span></a>
+  </li>
 </ul>
 <div id="my-tab-content" class="tab-content">
   <div class="tab-pane<% unless @tab || @tab ==  'challenge_tab'%> active<% end %>" id="challenge_tab">

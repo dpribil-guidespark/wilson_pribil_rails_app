@@ -14,10 +14,14 @@
     </blockquote>
     <% if challenge_winners(historic_challenge).size > 0 %>
     <h3>This Challenge's <%= "Geek".pluralize(challenge_winners(historic_challenge).count)%>:</h3>
-    <ul>
+    <ul class="list-group">
       <% challenge_winners(historic_challenge).each do |guess| %>
-      <li> <%= "#{guess.user.first_name} #{guess.user.last_name} (#{Guess.get_department_name(guess.department)})" %> </li>
-      <% end %> 
+          <li class="list-group-item">
+            <p class="challenge_winnders_p"><%= "#{guess.user.first_name} #{guess.user.last_name}" %>
+              <span class="badge"><%= Guess.get_department_name(guess.department) %> </span>
+            </p>
+          </li>
+      <% end %>
     </ul>
     <% else %>
       <h3>No winners for this challenge!</h3>

@@ -38,7 +38,7 @@ module ReqsHelper
   end
 
   def generate_friend_mail
-    return mail_to "", "Get email", subject: "Job opening at GuideSpark: " + Req.last.title, body: friend_email_content(Req.last)
+    return mail_to "", "<span class='fa fa-envelope-o fa-lg'></span>".html_safe, subject: "Job opening at GuideSpark: " + Req.last.title, body: friend_email_content(Req.last), class: 'btn btn-xs btn-primary'
   end
 
 end

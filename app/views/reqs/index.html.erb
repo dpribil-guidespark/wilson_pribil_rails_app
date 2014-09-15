@@ -15,7 +15,7 @@
     <% @reqs.each do |req| %>
       <tr>
         <td><%= req.title %></td>
-        <td><%= req.department %></td>
+        <td><%= Req.get_department_name(req.department) %></td>
         <td><%= req.manager %></td>
         <td><%= req.description %></td>
         <td><%= link_to 'Show', req %></td>

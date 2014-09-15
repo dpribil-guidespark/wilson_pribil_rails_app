@@ -21,6 +21,10 @@ class ReqsController < ApplicationController
   def edit
   end
 
+  def latest_req
+    render 'show'
+  end
+
   # POST /reqs
   # POST /reqs.json
   def create
@@ -62,13 +66,15 @@ class ReqsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_req
-      @req = Req.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def req_params
       params.require(:req).permit(:title, :department, :manager, :description)
+    end
+
+    def set_req
+      @challenge = get_latest_req
+    end
+    def get_latest_req
+      @req = Req.last
     end
 end

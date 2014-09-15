@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
   before_action :set_entities
 
+  def home
+  end
+
   def gotw_home
     if Challenge.all.count > 0
       redirect_to geek_of_the_week_path

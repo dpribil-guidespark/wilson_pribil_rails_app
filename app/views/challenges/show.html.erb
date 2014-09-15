@@ -15,7 +15,7 @@
 
     <blockquote>
       <h3><%= @challenge.question %></h3>
-      <% if @challenge.hint %>
+      <% if !@challenge.hint.empty? %>
           <p>
             <strong>Hint:</strong>
             <%= @challenge.hint %>

@@ -1,33 +1,30 @@
-<%= form_for(:req, url: req_of_the_week_path) do |f| %>
-  <% if @req.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@req.errors.count, "error") %> prohibited this req from being saved:</h2>
+<div class="row">
 
-      <ul>
-      <% @req.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= form_for(:req, url: req_of_the_week_path) do |f| %>
+
+      <div class="field col-md-12 form-group">
+        <%= f.text_field :title, :class => "form-control", :placeholder => "Req title" %>
+      </div>
+
+      <div class="col-md-12">
+        <div class="field form-group">
+          <%= f.select :department, options_for_select(DEPARTMENT_CONSTANTS.map { |x| [x[:name], x[:id]] }, 1), {}, {'class' => 'btn btn-default dropdown-toggle form-control', 'data-toggle' => 'dropdown'} %>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <%= f.text_field :manager, :class => "form-control", :placeholder => "Manager" %>
+      </div>
+      <div class="field col-md-12 form-group">
+        <%= f.text_area :description, :class => "form-control", :placeholder => "Description" %>
+      </div>
+
+      <div class="col-md-12 actions">
+            <span class="input-group-btn">
+             <%= f.submit :class => 'btn btn-primary', data: { 'confirm' => 'This will add a new req of the week. Are you sure?', 'confirm-fade' => true, 'confirm-title' => 'Start a new challenge'} %>
+         </span>
+      </div>
+
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.number_field :department %>
-  </div>
-  <div class="field">
-    <%= f.label :manager %><br>
-    <%= f.text_field :manager %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -50,7 +50,7 @@ class ChallengesController < ApplicationController
       if @challenge.save
         flash[:notice] = 'Challenge was successfully created.'
         flash[:send_notification_email] = params[:challenge][:send_notification_email] == "true"
-        format.html { redirect_to challenge_path}
+        format.html { redirect_to geek_of_the_week_path}
       else
         flash[:alert] = 'The question with the same answer was asked before!'
         format.html { render :new }
@@ -64,7 +64,7 @@ class ChallengesController < ApplicationController
     respond_to do |format|
       if @challenge.update(challenge_params)
         flash[:notice] = 'Challenge was successfully updated.'
-        format.html { redirect_to challenge_path}
+        format.html { redirect_to geek_of_the_week_path}
       else
         format.html { render :edit }
       end
@@ -77,7 +77,7 @@ class ChallengesController < ApplicationController
     @challenge.destroy
     respond_to do |format|
       flash[:notice] = 'Challenge was successfully destroyed.'
-      format.html { redirect_to challenges_path}
+      format.html { redirect_to geek_of_the_week_path}
     end
   end
 

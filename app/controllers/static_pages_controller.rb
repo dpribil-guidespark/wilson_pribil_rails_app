@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 
   def home
     if Challenge.all.count > 0
-      redirect_to challenge_path
+      redirect_to geek_of_the_week_path
     end
   end
 

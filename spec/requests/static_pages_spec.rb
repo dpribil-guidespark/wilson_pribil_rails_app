@@ -5,7 +5,7 @@ describe "Static pages" do
   subject { page }
 
   describe "About page" do
-    before { visit about_path }
+    before { visit geek_of_the_week_about_path }
 
     it { should have_content('Geek of the Week') }
     it { should have_content('GuideSpark')}
@@ -27,7 +27,7 @@ describe "Static pages" do
   describe "Home page" do
 
     describe "without a database should ask to create a new challenge" do
-      before { visit home_path }
+      before { visit geek_of_the_week_home_path }
       it { should have_content('Create a New Challenge')}
       it { should have_content('Create Challenge')}
 
@@ -41,7 +41,7 @@ describe "Static pages" do
       before {@userA = User.create(first_name: "David", last_name: "Wilson")}
       before {@challengeA = Challenge.create(question: "42", answer: "The Answer", user_id: @userA[:id])}
       before {@challengeB = Challenge.create(question: "12345", answer: "sequence", user_id: @userA[:id])}
-      before { visit home_path }
+      before { visit geek_of_the_week_home_path }
 
       it { should_not have_content('Create a New Challenge')}
       it { should_not have_content('Create Challenge')}
@@ -54,7 +54,7 @@ describe "Static pages" do
 
 
   describe "Leaderboard page" do
-    before { visit leaderboard_path }
+    before { visit geek_of_the_week_leaderboard_path }
 
     describe "should have correct title" do
       it { should have_title('Geek of the Week | Leaderboard')}
@@ -78,7 +78,7 @@ describe "Static pages" do
       let (:user) { FactoryGirl.create(:user) }
       let (:challengeA) { FactoryGirl.create(:challenge) }
       let (:challengeB) { FactoryGirl.create(:challenge) }
-      before { visit leaderboard_path }
+      before { visit geek_of_the_week_leaderboard_path }
 
       it { should have_content(challengeA.question) }
       it { should have_content(challengeA.answer) }
@@ -91,7 +91,7 @@ describe "Static pages" do
       let (:user) { FactoryGirl.create(:user) }      
       let (:challengeA) { FactoryGirl.create(:challenge) }
       let (:challengeB) { FactoryGirl.create(:challenge) }
-      before { visit leaderboard_path }
+      before { visit geek_of_the_week_leaderboard_path }
 
       it { should have_content(challengeA.hint) }
       it { should_not have_content(challengeB.hint) }

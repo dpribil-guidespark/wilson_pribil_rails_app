@@ -20,10 +20,8 @@ Rails.application.routes.draw do
     get :autocomplete_user_last_name, :on => :collection
   end
 
-  resources :geek_of_the_week, :controller => 'challenges', :only => [:new, :create, :latest_challenge] do
-
-  end
-  resources :guesses, :except => [:show, :edit]
+  resources :geek_of_the_week, :controller => 'challenges', :only => [:new, :create, :latest_challenge]
+  resources :guesses, :only => [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

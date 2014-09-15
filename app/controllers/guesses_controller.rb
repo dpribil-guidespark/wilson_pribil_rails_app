@@ -35,9 +35,9 @@ class GuessesController < ApplicationController
       if @guess.save
         flash[:notice] = 'Guess was successfully created.'
         flash[:tab] = 'guesses_tab'
-        format.html { redirect_to challenge_path }
+        format.html { redirect_to geek_of_the_week_path }
       else
-        format.html { redirect_to challenge_path }
+        format.html { redirect_to geek_of_the_week_path }
       end
     end
   end
@@ -46,7 +46,7 @@ class GuessesController < ApplicationController
     @guess.destroy
     respond_to do |format|
       flash[:notice] = 'Guess was successfully destroyed.'
-      format.html { redirect_to home_path }
+      format.html { redirect_to geek_of_the_week_guesses_path }
     end
   end
 

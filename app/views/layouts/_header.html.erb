@@ -1,7 +1,7 @@
 <div class="navbar navbar-inverse" role="navigation">
   <div class="container">
 
-    <p id="logo"><%= link_to image_tag("geekoftheweek.png", :alt => "Geek of the Week Logo", height: '32'), home_path %></p>
+    <p id="logo"><%= link_to image_tag("geekoftheweek.png", :alt => "Geek of the Week Logo", height: '32'), geek_of_the_week_home_path %></p>
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-content">
@@ -13,15 +13,15 @@
     </div>
 
           <ul id="collapsed-content" class="nav navbar-nav pull-right collapse navbar-collapse">
-           <li><%= link_to 'About',  about_path %></li>
-           <li><%= link_to 'Leaderboard', leaderboard_path %></li>
+           <li><%= link_to 'About',  geek_of_the_week_about_path %></li>
+           <li><%= link_to 'Leaderboard', geek_of_the_week_leaderboard_path %></li>
             <% if @challenge && @challenge.persisted? %>
 
           <li class="dropdown" data-no-collapse="true">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Evaluate guesses', guesses_path %></li>
-                <li><%= link_to 'New Challenge', new_challenge_path %></li>
+                <li><%= link_to 'Evaluate guesses', geek_of_the_week_guesses_path %></li>
+                <li><%= link_to 'New Challenge', new_geek_of_the_week_path %></li>
               </ul>
             </li>
             <% end %>

@@ -1,5 +1,4 @@
 <div id="my-tab-content" class="tab-content">
-  <div class="tab-pane<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>" id="challenge_tab">
     <h1 class="text-center">The Req of the Week is...</h1>
 
     <blockquote>
@@ -22,8 +21,8 @@
             <%= @req.description %>
           </p>
       <% end %>
+      <footer><p>More information on positions can always be found on the <a href="http://www.guidespark.com/about/careers">GuideSpark Careers page</a>.</p></footer>
     </blockquote>
-  </div>
 </div>
 
 <div class="panel panel-default">
@@ -31,7 +30,7 @@
     <h4>Know someone who might be interested?</h4>
   </div>
   <div class="panel-body">
-    <p>You can share by clicking here: </p>
+    <p>You can share the position with them by clicking here: <%= generate_friend_mail %></p>
   </div>
 
 

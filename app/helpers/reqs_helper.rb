@@ -23,4 +23,22 @@ module ReqsHelper
     return mail_to "test@test.com", "Company email", subject: "Req of the Week - " + Req.last.title + " - " + Date.today.to_formatted_s(:rfc822), body: email_content(Req.last), id: "autoEmail"
   end
 
+
+  def friend_email_content(new_req)
+
+    email_string = "Hey!\n\nThere's a great job opening at GuideSpark that I think you'd be perfect for. It's for a "
+    email_string += new_req.title + " in the "
+    email_string += Req.get_department_name(new_req.id) + " department, reporting to "
+    email_string += new_req.manager + ".\n\n"
+
+    email_string += "You can check out more details on the company's careers page:\n\t\t http://www.guidespark.com/about/careers \n\n"
+
+    email_string += "Let me know if you're interested.\n"
+
+  end
+
+  def generate_friend_mail
+    return mail_to "", "Get email", subject: "Job opening at GuideSpark: " + Req.last.title, body: friend_email_content(Req.last)
+  end
+
 end

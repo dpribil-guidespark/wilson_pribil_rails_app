@@ -17,7 +17,7 @@
            <li><%= link_to 'Leaderboard', geek_of_the_week_leaderboard_path %></li>
             <% if @challenge && @challenge.persisted? %>
 
-          <li class="dropdown" data-no-collapse="true">
+            <li class="dropdown" data-no-collapse="true">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
               <ul class="dropdown-menu" role="menu">
                 <li><%= link_to 'Evaluate guesses', geek_of_the_week_guesses_path %></li>

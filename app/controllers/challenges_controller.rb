@@ -53,7 +53,7 @@ class ChallengesController < ApplicationController
         format.html { redirect_to geek_of_the_week_path}
       else
         flash[:alert] = 'The question with the same answer was asked before!'
-        format.html { render :new }
+        format.html { redirect_to new_geek_of_the_week_path }
       end
     end
   end

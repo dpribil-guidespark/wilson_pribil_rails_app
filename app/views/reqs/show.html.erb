@@ -3,7 +3,7 @@
     <h1 class="text-center">The Req of the Week is...</h1>
 
     <blockquote>
-      <h3><%= @req.title %></h3>
+      <h2><%= @req.title %></h2>
       <% if @req.department %>
           <p>
             <strong>Department: </strong>
@@ -26,7 +26,16 @@
   </div>
 </div>
 
-<div><h1>To Add: Share buttons!</h1></div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Know someone who might be interested?</h4>
+  </div>
+  <div class="panel-body">
+    <p>You can share by clicking here: </p>
+  </div>
+
+
+</div>
 
 
 <%= generate_mail if flash[:send_notification_email] %>

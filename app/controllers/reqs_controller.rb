@@ -21,7 +21,7 @@ class ReqsController < ApplicationController
   def edit
   end
 
-  def req
+  def latest_req
     render 'show'
   end
 

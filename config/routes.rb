@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get 'geek_of_the_week', to: 'challenges#latest_challenge'
   get 'geek_of_the_week/guesses', to: 'guesses#index'
 
-  get 'req_of_the_week', to: 'reqs#latest_req'
+  get 'req_of_the_week/home', to: 'static_pages#rotw_home'
   get 'req_of_the_week/about', to: 'static_pages#rotw_about'
+  get 'req_of_the_week', to: 'reqs#latest_req'
+
 
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'

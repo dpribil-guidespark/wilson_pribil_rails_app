@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
   before_action :set_entities
 
+  def home
+  end
+
   def gotw_home
     if Challenge.all.count > 0
       redirect_to geek_of_the_week_path
@@ -8,7 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
   def gotw_about
-    render 'about'
+    render 'gotw_about'
   end
 
   def rotw_home
@@ -18,7 +21,7 @@ class StaticPagesController < ApplicationController
   end
 
   def rotw_about
-    render 'about'
+    render 'rotw_about'
   end
 
   def leaderboard

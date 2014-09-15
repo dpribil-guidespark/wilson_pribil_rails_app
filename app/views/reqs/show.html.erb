@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @req.title %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @req.department %>
+</p>
+
+<p>
+  <strong>Manager:</strong>
+  <%= @req.manager %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @req.description %>
+</p>
+
+<%= link_to 'Edit', edit_req_path(@req) %> |
+<%= link_to 'Back', reqs_path %>

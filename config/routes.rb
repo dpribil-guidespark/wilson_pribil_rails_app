@@ -2,13 +2,15 @@ Rails.application.routes.draw do
 
   resources :reqs
 
-  get 'home', to: 'static_pages#home'
+  get 'geek_of_the_week/home', to: 'static_pages#home'
 
-  get 'about', to: 'static_pages#about'
+  get 'geek_of_the_week/about', to: 'static_pages#about'
 
-  get 'leaderboard', to: 'static_pages#leaderboard'
+  get 'geek_of_the_week/leaderboard', to: 'static_pages#leaderboard'
 
-  get 'challenge', to: 'challenges#latest_challenge'
+  get 'geek_of_the_week', to: 'challenges#latest_challenge'
+
+  get 'geek_of_the_week/guesses', to: 'guesses#index'
 
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'
@@ -18,7 +20,9 @@ Rails.application.routes.draw do
     get :autocomplete_user_last_name, :on => :collection
   end
 
-  resources :challenges, :only => [:new, :create, :latest_challenge]
+  resources :geek_of_the_week, :controller => 'challenges', :only => [:new, :create, :latest_challenge] do
+
+  end
   resources :guesses, :except => [:show, :edit]
 
   # The priority is based upon order of creation: first created -> highest priority.

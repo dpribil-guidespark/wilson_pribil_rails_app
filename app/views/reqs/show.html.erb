@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div id="my-tab-content" class="tab-content">
+  <div class="tab-pane<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>" id="challenge_tab">
+    <h1 class="text-center">The Req of the Week is...</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @req.title %>
-</p>
+    <blockquote>
+      <h3><%= @req.title %></h3>
+      <% if @req.department %>
+          <p>
+            <strong>Department: </strong>
+            <%= Req.get_department_name(@req.department) %>
+          </p>
+      <% end %>
+      <% if !@req.manager.empty? %>
+          <p>
+            <strong>Manager: </strong>
+            <%= @req.manager %>
+          </p>
+      <% end %>
+      <% if !@req.description.empty? %>
+          <p>
+            <strong>Description: </strong>
+            <%= @req.description %>
+          </p>
+      <% end %>
+    </blockquote>
+  </div>
+</div>
 
-<p>
-  <strong>Department:</strong>
-  <%= @req.department %>
-</p>
+<div><h1>To Add: Share buttons!</h1></div>
 
-<p>
-  <strong>Manager:</strong>
-  <%= @req.manager %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @req.description %>
-</p>
-
-<%= link_to 'Edit', edit_req_path(@req) %> |
-<%= link_to 'Back', reqs_path %>
+<%= generate_mail if flash[:send_notification_email] %>

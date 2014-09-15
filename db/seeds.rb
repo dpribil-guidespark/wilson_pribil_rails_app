@@ -102,3 +102,9 @@ guesses_5.each do |g|
   g[:department] = 2
   Guess.create(g)
 end
+
+
+
+Req.create({title: "Production Specialist", department: 1, manager: "Dharam Rai", description: "You love video. Short, long, narrative, corporate, educational – you name it, you’re interested in making it. Motion graphics? Bring it. Script customization? Yes please. GuideSpark’s rapidly growing Content Team is looking for a Content Production Specialist who can hit the ground running in this entry level position. You have experience with digital content and excellent written communications skills. Let’s not forget your stellar attention to detail. Errors? Typos? Not on your watch. This could be the right opportunity for you to join one of the most promising companies in America (as named by Forbes). You know how to effectively manage your time and crank up the output when you need to. You like the idea of learning new content development skills in writing and design, not to mention project management, and you’re excited to hone the ones you already have."})
+
+

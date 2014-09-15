@@ -1,0 +1,35 @@
+<html>
+ <head></head>
+<body>
+<section>
+  <h2>Geek of the week</h2>
+  <h1>
+    <p><font color="orange" size="35" id="geekproblem"></font></p>
+  </h1> 
+  <h2>
+    <p><font color="orange" id="geekhint"></font></p>
+  </h2>
+  <h4>
+    <p>Think you know what this is? <a href="wins/geekoftheweek">Enter here!</a></p>
+  </h4>           
+</section>
+   
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>   
+<script type="text/javascript">
+  // var geek_json = {"id":6,"question":"I don't know","hint":"","answer":"I don't know","created_at":"2014-09-15T16:21:02.000Z","updated_at":"2014-09-15T16:21:02.000Z"};
+  // var geek_json = {"id":5,"question":"02210","hint":"East Coast","answer":"Zip code of Boston Office","created_at":"2014-09-15T16:24:39.000Z","updated_at":"2014-09-15T16:24:39.000Z"};
+  $(document).ready(function(e){
+    $.getJSON('wins/geekoftheweek/challenge.json', function(data) {
+      if (data.question) { 
+        $('#geekproblem').html(data.question);
+      } else {
+        $('#geekproblem').html("No Question!");
+      }
+      if (data.hint){
+        $('#geekhint').html("Hint: " + data.hint);
+      };
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,21 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div id="my-tab-content" class="tab-content">
+    <h1 class="text-center">The Req of the Week is...</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @req.title %>
-</p>
+    <blockquote>
+      <h2><%= @req.title %></h2>
+      <% if @req.department %>
+          <p>
+            <strong>Department: </strong>
+            <%= Req.get_department_name(@req.department) %>
+          </p>
+      <% end %>
+      <% if !@req.manager.empty? %>
+          <p>
+            <strong>Manager: </strong>
+            <%= @req.manager %>
+          </p>
+      <% end %>
+      <% if !@req.description.empty? %>
+          <p>
+            <strong>Description: </strong>
+            <%= @req.description %>
+          </p>
+      <% end %>
+      <footer><p>More information on positions can always be found on the <a href="http://www.guidespark.com/about/careers">GuideSpark Careers page</a>.</p></footer>
+    </blockquote>
+</div>
 
-<p>
-  <strong>Department:</strong>
-  <%= @req.department %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Know someone who might be interested?</h4>
+  </div>
+  <div class="panel-body">
+    <p>You can share the position with them by clicking here: <%= generate_friend_mail %></p>
+  </div>
 
-<p>
-  <strong>Manager:</strong>
-  <%= @req.manager %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @req.description %>
-</p>
+<%= generate_mail if flash[:send_notification_email] %>
+

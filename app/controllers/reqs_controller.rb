@@ -22,6 +22,7 @@ class ReqsController < ApplicationController
   end
 
   def latest_req
+    get_latest_req
     render 'show'
   end
 
@@ -32,7 +33,7 @@ class ReqsController < ApplicationController
 
     respond_to do |format|
       if @req.save
-        format.html { redirect_to @req, notice: 'Req was successfully created.' }
+        format.html { redirect_to req_of_the_week_path, notice: 'Req was successfully created.' }
         format.json { render :show, status: :created, location: @req }
       else
         format.html { render :new }

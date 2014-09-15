@@ -1,4 +1,4 @@
-<%= form_for(@req) do |f| %>
+<%= form_for(:req, url: req_of_the_week_path) do |f| %>
   <% if @req.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@req.errors.count, "error") %> prohibited this req from being saved:</h2>

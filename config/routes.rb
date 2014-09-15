@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :reqs
 
-  get 'geek_of_the_week/home', to: 'static_pages#home'
-
-  get 'geek_of_the_week/about', to: 'static_pages#about'
-
+  get 'geek_of_the_week/home', to: 'static_pages#gotw_home'
+  get 'geek_of_the_week/about', to: 'static_pages#gotw_about'
   get 'geek_of_the_week/leaderboard', to: 'static_pages#leaderboard'
-
   get 'geek_of_the_week', to: 'challenges#latest_challenge'
-
   get 'geek_of_the_week/guesses', to: 'guesses#index'
+
+  get 'req_of_the_week', to: 'reqs#latest_req'
+  get 'req_of_the_week/about', to: 'static_pages#rotw_about'
 
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'
@@ -22,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :geek_of_the_week, :controller => 'challenges', :only => [:new, :create, :latest_challenge]
   resources :guesses, :only => [:create, :destroy]
+
+  resources :req_of_the_week, :controller => 'reqs', :only => [:new, :create, :latest_req]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

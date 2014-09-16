@@ -13,8 +13,12 @@ DEPARTMENT_CONSTANTS = [
     {id: 7, name: 'Sales'}
 ]
 
-USERNAME = "user"
-PASSWORD = "password"
+GOTW_USERNAME = "user"
+GOTW_PASSWORD = "password"
+
+ROTW_USERNAME = "user"
+ROTW_PASSWORD = "password"
+
 HOST_ADDRESS = "localhost"
 
 CONTEXT_UNDEFINED = -1

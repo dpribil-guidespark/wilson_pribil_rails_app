@@ -1,4 +1,5 @@
 class ReqsController < ApplicationController
+  http_basic_authenticate_with name: ROTW_USERNAME, password: ROTW_PASSWORD, only: [:new, :create]
   before_action :set_req, only: [:show, :edit, :update, :destroy]
 
   # GET /reqs

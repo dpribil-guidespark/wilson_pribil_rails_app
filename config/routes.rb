@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'req_of_the_week/about', to: 'static_pages#rotw_about'
   get 'req_of_the_week', to: 'reqs#latest_req'
 
+  get 'about', to: 'static_pages#about'
+
 
   put 'guesses/update_guess_status', to: 'guesses#update_guess_status', as: 'update_guess_status'
   post 'challenges/create', to: 'challenges#create', as: 'create_challenge'

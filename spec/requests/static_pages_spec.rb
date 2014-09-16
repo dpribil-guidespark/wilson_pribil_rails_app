@@ -146,6 +146,7 @@ describe "Static pages" do
         it { should have_content(@challengeA.question) }
         it { should have_content(@challengeA.answer) }
       end
+
       describe "should not have current challenge details" do
         it { should_not have_content(@challengeB.question) }
         it { should_not have_content(@challengeB.answer) }
@@ -165,13 +166,20 @@ describe "Static pages" do
         it {should have_content("No winners for this challenge!")}
       end
 
-      describe "some winners" do
+      describe "one winner" do
         before {@userB = User.create(first_name: "Bob", last_name: "Benedict")}
-        before {@guessA = Guess.create(answer:"A guess", challenge_id: @challengeA[:id], user_id: @userB[:id])}
-        before {@guessA[:status] = 1}
-        before {@guessA.save}
+        before {@guessA = Guess.create(answer:"A guess", challenge_id: @challengeA[:id], user_id: @userB[:id], status: 1, department: 1)}
         before {visit geek_of_the_week_leaderboard_path}
         it {should have_content("This Challenge's Geek:")}
+      end
+
+      describe "multiple winner" do
+        before {@userB = User.create(first_name: "Bob", last_name: "Benedict")}
+        before {@userC = User.create(first_name: "Emmanuel", last_name: "Pastor")}
+        before {@guessA = Guess.create(answer:"A guess", challenge_id: @challengeA[:id], user_id: @userB[:id], status: 1, department: 1)}
+        before {@guessA = Guess.create(answer:"A guess", challenge_id: @challengeA[:id], user_id: @userC[:id], status: 1, department: 1)}
+        before {visit geek_of_the_week_leaderboard_path}
+        it {should have_content("This Challenge's Geeks:")}
       end
     end
 

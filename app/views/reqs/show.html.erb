@@ -21,11 +21,11 @@
             <%= @req.description %>
           </p>
       <% end %>
-      <footer><p>More information on positions can always be found on the <a href="http://www.guidespark.com/about/careers">GuideSpark Careers page</a>.</p></footer>
+      <footer><p>More information on all open positions can always be found on the <a href="http://www.guidespark.com/about/careers">GuideSpark Careers page</a>.</p></footer>
     </blockquote>
 </div>
 
 <div><h4>Share with a friend: <%= generate_friend_mail %></h4></div>
 
-<%= generate_mail if flash[:send_notification_email] %>
+<%= req_generate_mail if flash[:send_notification_email] %>
 

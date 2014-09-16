@@ -19,12 +19,21 @@
         <%= f.text_area :description, :class => "form-control", :placeholder => "Description" %>
       </div>
 
+      <%= f.hidden_field(:send_notification_email, value: 'true') %>
+      <div class="col-md-12 form-group">
+              <span>
+                  <input id="email_checkbox" type="checkbox" name="gg-checkbox-mail"
+                  data-size="large" data-on-text="<span class='fa fa-check fa-lg'></span>"
+                  data-off-text="<span class='fa fa-close fa-lg'></span>" data-label-text="<span class='fa fa-envelope-o fa-lg' style='color: #999'></span>"
+                  checked>
+              </span>
+      </div>
+
       <div class="col-md-12 actions">
             <span class="input-group-btn">
              <%= f.submit :class => 'btn btn-primary', data: { 'confirm' => 'This will add a new req of the week. Are you sure?', 'confirm-fade' => true, 'confirm-title' => 'Start a new challenge'} %>
          </span>
       </div>
-
   <% end %>
 
 </div>

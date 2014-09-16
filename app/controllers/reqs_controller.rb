@@ -33,11 +33,12 @@ class ReqsController < ApplicationController
 
     respond_to do |format|
       if @req.save
-        format.html { redirect_to req_of_the_week_path, notice: 'Req was successfully created.' }
-        format.json { render :show, status: :created, location: @req }
+        flash[:notice] = 'Req was successfully created.'
+        flash[:send_notification_email] = params[:req][:send_notification_email] == "true"
+        format.html { redirect_to req_of_the_week_path}
       else
-        format.html { render :new }
-        format.json { render json: @req.errors, status: :unprocessable_entity }
+        flash[:alert] = 'There was a problem. Please resubmit the Req of the Week.'
+        format.html { redirect_to new_req_of_the_week_path }
       end
     end
   end

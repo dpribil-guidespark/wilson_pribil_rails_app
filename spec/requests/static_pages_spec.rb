@@ -4,12 +4,13 @@ describe "Static pages" do
 
   subject { page }
 
-  describe "About page" do
-    before { visit geek_of_the_week_about_path }
+  describe "Global About page" do
+    before { visit about_path }
 
-    it { should have_content('Geek of the Week') }
-    it { should have_content('GuideSpark')}
-    it { should have_content('Wins Meeting')}
+    describe "include basic information" do
+      it { should have_content('Wins of the Week') }
+      it { should have_content('GuideSpark')}
+    end 
 
     describe "include reporting problems information" do
       it { should have_content('Any Problems?')}
@@ -20,11 +21,71 @@ describe "Static pages" do
     end
 
     describe "should have correct title" do
-     it { should have_title('Geek of the Week | About')}
+     it { should have_title("| About")}
+     it { should have_title("Wins of the Week")}
    end
   end
 
-  describe "Home page" do
+  describe "GOTW About page" do
+    before { visit geek_of_the_week_about_path }
+
+    describe "include basic information" do
+      it { should have_content('Geek of the Week') }
+      it { should have_content('GuideSpark')}
+    end
+
+    describe "include reporting problems information" do
+      it { should have_content('Any Problems?')}
+      it { should have_content('David Pribil')}
+      it { should have_content('David Wilson')}
+      it { should have_content('dpribil')}
+      it { should have_content('dwilson')}
+    end
+
+    describe "should have correct title" do
+     it { should have_title("| About")}
+     it { should have_title("Geek of the Week")}
+   end
+  end
+
+  describe "ROTW About page" do
+    before { visit req_of_the_week_about_path }
+
+    describe "include basic information" do
+      it { should have_content('Req of the Week') }
+      it { should have_content('GuideSpark')}
+    end
+
+    describe "include reporting problems information" do
+      it { should have_content('Any Problems?')}
+      it { should have_content('David Pribil')}
+      it { should have_content('David Wilson')}
+      it { should have_content('dpribil')}
+      it { should have_content('dwilson')}
+    end
+
+    describe "should have correct title" do
+     it { should have_title("| About")}
+     it { should have_title("Req of the Week")}
+   end
+  end    
+
+  describe "Global Home page" do
+    before {visit root_path}
+
+    describe "should link to sub-sites" do
+      it { should have_link('Geek of the Week', href: geek_of_the_week_home_path)}
+      it { should have_link('Req of the Week',  href: req_of_the_week_home_path)}
+      it { should have_link("GuideSpark Internal Site", href: "http://intranet.guidespark.net/")}
+    end
+
+    describe "should have correct title" do
+      it { should have_title("Wins of the Week")}
+    end
+  end
+
+
+  describe "GOTW Home page" do
 
     describe "without a database should ask to create a new challenge" do
       before { visit geek_of_the_week_home_path }
@@ -35,33 +96,34 @@ describe "Static pages" do
     end
   end
 
-  describe "Home page" do
+  describe "GOTW Home page" do
 
-    describe "with a database should show the latest challenge" do
-      before {@userA = User.create(first_name: "David", last_name: "Wilson")}
-      before {@challengeA = Challenge.create(question: "42", answer: "The Answer", user_id: @userA[:id])}
-      before {@challengeB = Challenge.create(question: "12345", answer: "sequence", user_id: @userA[:id])}
-      before { visit geek_of_the_week_home_path }
+    # describe "with a database should show the latest challenge" do
+    #   before {@userA = User.create(first_name: "David", last_name: "Wilson")}
+    #   before {@challengeA = Challenge.create(question: "42", answer: "The Answer", user_id: @userA[:id])}
+    #   before {@challengeB = Challenge.create(question: "12345", answer: "sequence", user_id: @userA[:id])}
+    #   before { visit geek_of_the_week_home_path }
 
-      it { should_not have_content('Create a New Challenge')}
-      it { should_not have_content('Create Challenge')}
+    #   it { should_not have_content('Create a New Challenge')}
+    #   it { should_not have_content('Create Challenge')}
 
-      it { should have_content('Challenge of the Week') }
-      it { should have_content(@challengeB.question) }
-    end
+    #   it { should have_content('Challenge of the Week') }
+    #   it { should have_content(@challengeB.question) }
+    # end
 
   end
 
 
-  describe "Leaderboard page" do
+  describe "GOTW Leaderboard page" do
     before { visit geek_of_the_week_leaderboard_path }
 
     describe "should have correct title" do
-      it { should have_title('Geek of the Week | Leaderboard')}
+      it { should have_title("Geek of the Week") }
+      it { should have_title("| Leaderboard")}
     end
 
     describe "should have panel headings" do
-      it { should have_content('Last Challenge:')}
+      it { should have_content('Previous Challenge')}
       it { should have_content('Leaderboard:')}
     end
 
@@ -72,33 +134,45 @@ describe "Static pages" do
     end
   end
 
-  describe "Interactive Leaderboard" do
+  describe "GOTW Interactive Leaderboard" do
 
     describe "should contain the previous challenges question, answer and setter" do
-      let (:user) { FactoryGirl.create(:user) }
-      let (:challengeA) { FactoryGirl.create(:challenge) }
-      let (:challengeB) { FactoryGirl.create(:challenge) }
+      before {@userA = User.create(first_name: "David", last_name: "Wilson")}
+      before {@challengeA = Challenge.create(question: "42", answer: "The Answer", hint: "This is a hint", user_id: @userA[:id])}
+      before {@challengeB = Challenge.create(question: "12345", answer: "sequence", user_id: @userA[:id])}
       before { visit geek_of_the_week_leaderboard_path }
 
-      it { should have_content(challengeA.question) }
-      it { should have_content(challengeA.answer) }
+      describe "should have previous challenge details" do 
+        it { should have_content(@challengeA.question) }
+        it { should have_content(@challengeA.answer) }
+      end
+      describe "should not have current challenge details" do
+        it { should_not have_content(@challengeB.question) }
+        it { should_not have_content(@challengeB.answer) }
+      end
 
-      it { should_not have_content(challengeB.question) }
-      it { should_not have_content(challengeB.answer) }
-    end
+      describe "should contain the previous challenge hint if present" do
+        it { should have_content(@challengeA.hint) }
+        
+        describe "but not if no hint" do
+          before {@challengeC = Challenge.create(question: "abc", answer: "letters", user_id: @userA[:id])}
+          before { visit geek_of_the_week_leaderboard_path }
+          it { should_not have_content("Hint")}
+        end
+      end
 
-    describe "should contain the previous challenge hint if present" do
-      let (:user) { FactoryGirl.create(:user) }      
-      let (:challengeA) { FactoryGirl.create(:challenge) }
-      let (:challengeB) { FactoryGirl.create(:challenge) }
-      before { visit geek_of_the_week_leaderboard_path }
+      describe "no winners" do
+        it {should have_content("No winners for this challenge!")}
+      end
 
-      it { should have_content(challengeA.hint) }
-      it { should_not have_content(challengeB.hint) }
-    end
-
-    describe "should contain the previous challenge winners, if any" do
-
+      describe "some winners" do
+        before {@userB = User.create(first_name: "Bob", last_name: "Benedict")}
+        before {@guessA = Guess.create(answer:"A guess", challenge_id: @challengeA[:id], user_id: @userB[:id])}
+        before {@guessA[:status] = 1}
+        before {@guessA.save}
+        before {visit geek_of_the_week_leaderboard_path}
+        it {should have_content("This Challenge's Geek:")}
+      end
     end
 
   end

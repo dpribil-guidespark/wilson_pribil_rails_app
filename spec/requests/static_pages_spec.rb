@@ -98,18 +98,21 @@ describe "Static pages" do
 
   describe "GOTW Home page" do
 
-    # describe "with a database should show the latest challenge" do
-    #   before {@userA = User.create(first_name: "David", last_name: "Wilson")}
-    #   before {@challengeA = Challenge.create(question: "42", answer: "The Answer", user_id: @userA[:id])}
-    #   before {@challengeB = Challenge.create(question: "12345", answer: "sequence", user_id: @userA[:id])}
-    #   before { visit geek_of_the_week_home_path }
+    describe "with a database should show the latest challenge" do
+      before { @userA = User.create(first_name: "David", last_name: "Wilson")}
+      before { @challengeA = Challenge.create(question: "42", answer: "The Answer", hint: "This is a hint", user: @userA)}
+      before { @challengeB = Challenge.create(question: "12345", answer: "sequence", user: @userA)}
+      before { visit geek_of_the_week_home_path }
 
-    #   it { should_not have_content('Create a New Challenge')}
-    #   it { should_not have_content('Create Challenge')}
+      describe "it should not say there are no challenges" do
+        it { should_not have_content("There are no challenges available.")}
+      end
 
-    #   it { should have_content('Challenge of the Week') }
-    #   it { should have_content(@challengeB.question) }
-    # end
+      describe "It should give the correct information" do
+        it { should have_content('The question for this week is') }
+        it { should have_content(@challengeB.question) }
+      end
+    end
 
   end
 

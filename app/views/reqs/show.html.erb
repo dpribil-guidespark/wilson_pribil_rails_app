@@ -25,14 +25,7 @@
     </blockquote>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4>Know someone who might be interested?</h4>
-  </div>
-  <div class="panel-body">
-    <p>You can share the position with them by clicking here: <%= generate_friend_mail %></p>
-  </div>
-
+<div><h4>Share with a friend: <%= generate_friend_mail %></h4></div>
 
 <%= generate_mail if flash[:send_notification_email] %>
 

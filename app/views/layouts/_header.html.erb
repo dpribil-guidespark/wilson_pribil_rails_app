@@ -1,7 +1,14 @@
 <div class="navbar navbar-inverse" role="navigation">
   <div class="container">
 
-    <p id="logo"><%= link_to image_tag("geekoftheweek.png", :alt => "Geek of the Week Logo", height: '32'), geek_of_the_week_home_path %></p>
+    <% if @context == CONTEXT_UNDEFINED%>
+        <p id="logo"><%= link_to image_tag("winsoftheweek.png", :alt => "Wins of the Week Logo", height: '32'), root_path %></p>
+  <% elsif @context == CONTEXT_GEEK_OF_THE_WEEK %>
+        <p id="logo"><%= link_to image_tag("geekoftheweek.png", :alt => "Geek of the Week Logo", height: '32'), geek_of_the_week_home_path %></p>
+    <% elsif @context == CONTEXT_REQ_OF_THE_WEEK %>
+        <p id="logo"><%= link_to image_tag("reqoftheweek.png", :alt => "Req of the Week Logo", height: '32'), req_of_the_week_home_path %></p>
+    <% end %>
+
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-content">
@@ -13,18 +20,34 @@
     </div>
 
           <ul id="collapsed-content" class="nav navbar-nav pull-right collapse navbar-collapse">
-           <li><%= link_to 'About',  geek_of_the_week_about_path %></li>
-           <li><%= link_to 'Leaderboard', geek_of_the_week_leaderboard_path %></li>
-            <% if @challenge && @challenge.persisted? %>
-
             <li class="dropdown" data-no-collapse="true">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Change challenge<span class="caret"></span> </a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Evaluate guesses', geek_of_the_week_guesses_path %></li>
-                <li><%= link_to 'New Challenge', new_geek_of_the_week_path %></li>
+                <li><%= link_to image_tag("geekoftheweek.png", :alt => "Geek of the Week Logo", height: '32'), geek_of_the_week_home_path %></li>
+                <li><%= link_to image_tag("reqoftheweek.png", :alt => "Req of the Week Logo", height: '32'), req_of_the_week_home_path %></li>
               </ul>
             </li>
-            <% end %>
+           <li><%= link_to 'About',  get_about_path %></li>
+            <% if @context == CONTEXT_GEEK_OF_THE_WEEK %>
+                <li><%= link_to 'Leaderboard', geek_of_the_week_leaderboard_path %></li>
+                <% if @challenge && @challenge.persisted? %>
+
+                    <li class="dropdown" data-no-collapse="true">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to 'Evaluate guesses', geek_of_the_week_guesses_path %></li>
+                        <li><%= link_to 'New Challenge', new_geek_of_the_week_path %></li>
+                      </ul>
+                    </li>
+                <% end %>
+                <% elsif @context == CONTEXT_REQ_OF_THE_WEEK %>
+                    <li class="dropdown" data-no-collapse="true">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to 'New Req of the Week', new_req_of_the_week_path %></li>
+                      </ul>
+                    </li>
+                <% end %>
 
           </ul>
 

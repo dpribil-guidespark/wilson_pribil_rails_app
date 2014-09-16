@@ -9,10 +9,12 @@ module ApplicationHelper
   end
 
   def get_home_path
-    if @context == CONTEXT_GEEK_OF_THE_WEEK
-      geek_of_the_week_path
+    if @context == CONTEXT_UNDEFINED
+      root_path
+    elsif @context == CONTEXT_GEEK_OF_THE_WEEK
+      geek_of_the_week_home_path
     elsif @context == CONTEXT_REQ_OF_THE_WEEK
-      req_of_the_week_path
+      req_of_the_week_home_path
     end
   end
 

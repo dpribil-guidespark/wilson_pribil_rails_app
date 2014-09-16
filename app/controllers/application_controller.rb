@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
 
   private
     def set_context
-      @context = request.original_url.include?('geek_of_the_week') ? CONTEXT_GEEK_OF_THE_WEEK : CONTEXT_REQ_OF_THE_WEEK;
+      if request.original_url.include?('geek_of_the_week')
+        @context = CONTEXT_GEEK_OF_THE_WEEK
+      elsif request.original_url.include?('req_of_the_week')
+        @context = CONTEXT_REQ_OF_THE_WEEK
+      else
+        @context = CONTEXT_UNDEFINED
+      end
     end
 
 end

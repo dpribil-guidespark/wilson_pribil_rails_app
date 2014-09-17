@@ -3,14 +3,15 @@ STATUS_RIGHT = 1
 
 # department values
 DEPARTMENT_CONSTANTS = [
-    {id: 0, name: 'CEO'},
-    {id: 1, name: 'Content'},
-    {id: 2, name: 'Customer Success'},
-    {id: 3, name: 'Engineering'},
-    {id: 4, name: 'G&A'},
-    {id: 5, name: 'Marketing'},
-    {id: 6, name: 'Product management'},
-    {id: 7, name: 'Sales'}
+    {id: 0, name: 'No Department'},
+    {id: 1, name: 'CEO'},
+    {id: 2, name: 'Content'},
+    {id: 3, name: 'Customer Success'},
+    {id: 4, name: 'Engineering'},
+    {id: 5, name: 'G&A'},
+    {id: 6, name: 'Marketing'},
+    {id: 7, name: 'Product management'},
+    {id: 8, name: 'Sales'}
 ]
 
 GOTW_USERNAME = "user"

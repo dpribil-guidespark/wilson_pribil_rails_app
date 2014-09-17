@@ -23,7 +23,7 @@
   <% if show_department %>
       <div class="col-md-4">
         <div class="field form-group">
-          <%= form.select :department, options_for_select(DEPARTMENT_CONSTANTS.map { |x| [x[:name], x[:id]] }, cookies[:guess_game_department] || 1), {}, {'class' => 'btn btn-default dropdown-toggle form-control', 'data-toggle' => 'dropdown'} %>
+          <%= form.select :department, options_for_select(DEPARTMENT_CONSTANTS.map { |x| [x[:name], x[:id]] }, cookies[:guess_game_department] || 0), {}, {'class' => 'btn btn-default dropdown-toggle form-control', 'data-toggle' => 'dropdown'} %>
         </div>
       </div>
   <% end %>

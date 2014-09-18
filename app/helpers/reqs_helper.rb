@@ -5,7 +5,7 @@ module ReqsHelper
 
     email_string += "Here is the current \"Req of the Week\" challenge:\n"
     email_string += "Position: " + new_req.title + "\n"
-    email_string += "Department: " + Req.get_department_name(new_req.id) + "\n"
+    email_string += "Department: " + Req.get_department_name(new_req.department) + "\n"
     email_string += "Manager: " + new_req.manager + "\n"
 
     email_string += "\nYou can access the full job description on the GuideSpark careers page: http://www.guidespark.com/about/careers." 
@@ -28,7 +28,7 @@ module ReqsHelper
 
     email_string = "Hey!\n\nThere's a great job opening at GuideSpark that I think you'd be perfect for. It's for a "
     email_string += new_req.title + " in the "
-    email_string += Req.get_department_name(new_req.id) + " department, reporting to "
+    email_string += Req.get_department_name(new_req.department) + " department, reporting to "
     email_string += new_req.manager + ".\n\n"
 
     email_string += "You can check out more details on the company's careers page:\n\t\t http://www.guidespark.com/about/careers \n\n"

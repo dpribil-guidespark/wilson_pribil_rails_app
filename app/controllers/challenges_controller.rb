@@ -23,6 +23,7 @@ class ChallengesController < ApplicationController
   end
 
   def latest_challenge
+    flash[:tab] = 'leaderboard_tab' if params[:historic_challenge]
     render 'show'
   end
 
@@ -85,6 +86,10 @@ class ChallengesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
       @challenge = get_latest_challenge
+      if Challenge.all.count>1
+        @guesses=Guess.all
+        @correct_guesses = !@guesses.empty? ? @guesses.where(:status => STATUS_RIGHT) : nil
+      end
     end
 
     def set_user

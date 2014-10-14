@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'geek_of_the_week/home', to: 'static_pages#gotw_home'
   get 'geek_of_the_week/about', to: 'static_pages#gotw_about'
-  get 'geek_of_the_week/leaderboard', to: 'static_pages#leaderboard'
   get 'geek_of_the_week', to: 'challenges#latest_challenge'
   get 'geek_of_the_week/guesses', to: 'guesses#index'
 

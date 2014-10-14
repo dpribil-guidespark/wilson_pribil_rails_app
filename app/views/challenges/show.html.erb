@@ -1,10 +1,13 @@
 <% ['nav-pills nav-justified', 'nav-tabs'].each_with_index do |v,i|%>
     <ul id="tabs-<%= i %>" class="nav <%= v %>" data-tabs="tabs">
-      <li class="col-xs-6<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>">
+      <li class="col-xs-4<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>">
         <a href="#challenge_tab" data-toggle="tab">Challenge</a>
       </li>
-        <li class="col-xs-6<% if flash[:tab] ==  'guesses_tab'%> active<% end %>">
+      <li class="col-xs-4<% if flash[:tab] ==  'guesses_tab'%> active<% end %>">
         <a href="#guesses_tab" data-toggle="tab">Guesses <span class="badge"><%= @challenge.guesses.size %></span></a>
+      </li>
+      <li class="col-xs-4<% if flash[:tab] ==  'leaderboard_tab'%> active<% end %>">
+        <a href="#leaderboard_tab" data-toggle="tab">Leaderboard</a>
       </li>
     </ul>
 <% end %>
@@ -38,6 +41,12 @@
       <%= render partial: 'layouts/guesses', :locals => {:isAdmin => false, :guesses => @challenge.guesses}%>
     </div>
   </div>
+
+  <div class="tab-pane<% if flash[:tab] ==  'leaderboard_tab'%> active<% end %>" id="leaderboard_tab">
+
+    <%= render partial: 'leaderboard/leaderboard' %>
+  </div>
+
 </div>
 
 <%= generate_mail if flash[:send_notification_email] %>

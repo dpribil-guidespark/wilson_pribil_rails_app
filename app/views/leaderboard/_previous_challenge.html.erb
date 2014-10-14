@@ -40,8 +40,8 @@
         <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-double-left fa-lg'></span></button>
         <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-left fa-lg'       ></span></button>
       <% else %>
-        <%= link_to "<span class='fa fa-angle-double-left fa-lg'></span>".html_safe, geek_of_the_week_leaderboard_path(historic_challenge: Challenge.first),             class: "btn btn-primary" %>
-        <%= link_to "<span class='fa fa-angle-left fa-lg'></span>".html_safe,        geek_of_the_week_leaderboard_path(historic_challenge: historic_challenge.previous), class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-double-left fa-lg'></span>".html_safe, geek_of_the_week_path(historic_challenge: Challenge.first), class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-left fa-lg'></span>".html_safe,        geek_of_the_week_path(historic_challenge: historic_challenge.previous), class: "btn btn-primary" %>
       <% end %>
     </div>
     <div id="leaderboards-panel-footer-right" class="btn-group pull-right">
@@ -49,8 +49,8 @@
         <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-right fa-lg'       ></span></button>
         <button type="button" class="btn btn-primary disabled"><span class='fa fa-angle-double-right fa-lg'></span></button>
       <% else %>
-        <%= link_to "<span class='fa fa-angle-right fa-lg'></span>".html_safe,        geek_of_the_week_leaderboard_path(historic_challenge: historic_challenge.next), class: "btn btn-primary" %>
-        <%= link_to "<span class='fa fa-angle-double-right fa-lg'></span>".html_safe, geek_of_the_week_leaderboard_path(historic_challenge: Challenge.all[-2]),       class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-right fa-lg'></span>".html_safe,        geek_of_the_week_path(historic_challenge: historic_challenge.next), class: "btn btn-primary" %>
+        <%= link_to "<span class='fa fa-angle-double-right fa-lg'></span>".html_safe, geek_of_the_week_path(historic_challenge: Challenge.all[-2]),       class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>

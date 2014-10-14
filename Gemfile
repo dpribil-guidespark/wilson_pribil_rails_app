@@ -56,6 +56,10 @@ gem 'font-awesome-rails'
 
 gem 'twitter-bootstrap-rails-confirm', github: 'bluerail/twitter-bootstrap-rails-confirm', branch: 'bootstrap3'
 
+#Highcharts
+gem "highcharts-js-rails",    "~> 0.2.1"
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

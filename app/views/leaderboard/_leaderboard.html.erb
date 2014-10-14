@@ -1,4 +1,3 @@
-<% provide(:title, " | Leaderboard") %>
 <h1 class="text-center">Previous Challenges and Leaderboard</h1>
 
 <% if params.has_key?(:historic_challenge) && Challenge.exists?(id: params[:historic_challenge]) %>
@@ -7,10 +6,9 @@
 <% historic_challenge ||=  (Challenge.all.count>1 ? Challenge.all[-2] : nil) %>
 <% end %>
 
-<%= render partial: 'previous_challenge', locals: {historic_challenge: historic_challenge} %>
+<%= render partial: 'leaderboard/previous_challenge', locals: {historic_challenge: historic_challenge} %>
 
-<%= render 'user_leaderboard' %>
+<%= render 'leaderboard/user_leaderboard' %>
 
-<%= render 'department_leaderboard' %>
-
+<%= render 'leaderboard/department_leaderboard' %>
 <div class="back_button"><%= link_to 'Back to current challenge', get_home_path, :class => "btn btn-default"%></div>

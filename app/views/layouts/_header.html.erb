@@ -29,7 +29,6 @@
             </li>
            <li><%= link_to 'About',  get_about_path %></li>
             <% if @context == CONTEXT_GEEK_OF_THE_WEEK %>
-                <li><%= link_to 'Leaderboard', geek_of_the_week_leaderboard_path %></li>
                 <% if @challenge && @challenge.persisted? %>
 
                     <li class="dropdown" data-no-collapse="true">

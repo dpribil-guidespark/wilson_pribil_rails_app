@@ -4,5 +4,6 @@
     <h2 class="panel-title">Current Guesses</h2>
   </div>
   <%= render partial: 'layouts/guesses', :locals => {:isAdmin => true, :guesses => @guesses}%>
-  <div class="panel-footer"><%= link_to 'Back to challenge', geek_of_the_week_path, :class => "btn btn-default"%></div>
 </div>
+
+<div class="back_button"><%= link_to 'Back to current challenge', get_home_path, :class => "btn btn-default"%></div>

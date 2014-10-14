@@ -127,4 +127,23 @@ module ChallengesHelper
 
   end
 
+  def dept_pie_chart
+    dept_results = sorted_list_of_depts
+    dept_list = []
+    dept_results.each do |dept|
+      dept_list << [Guess.get_department_name(dept[:id]),dept[:count]]
+    end
+
+    pie_chart = Highcharts.new do |chart|
+      chart.chart(renderTo: 'piechart', type: 'pie')
+      chart.title('Department Leaderboard')
+      chart.plotOptions(allowPointSelect: true, cursor: 'pointer')
+      chart.series([{type: 'pie', name: 'Geeks', data: dept_list }])
+      chart.credits(enabled: false)
+    end
+
+    return pie_chart
+  end
+
+
 end

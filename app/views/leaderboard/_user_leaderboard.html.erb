@@ -2,14 +2,12 @@
   <div class="panel-heading"><strong>Leaderboard:</strong></div>
   <div class="panel-body">
     <% if list_of_geeks %>
-    <div class="row">
-      <div class="span6 offset3">
         <table class="table table-striped ">
           <thead>  
             <tr>
               <th>Geek</th>
               <th>Department</th>
-              <th>Record</th>
+              <th class="text-center">Record</th>
             </tr>
           </thead>
           <tbody>
@@ -22,13 +20,11 @@
                    <span class="badge"><%= dep_name %> </span>
                 <% end %>
               </td> 
-              <td> <%= geek[:count] %></td>
+              <td class="text-center"> <%= geek[:count] %></td>
             </tr>
             <% end %> 
           </tbody>
         </table>
-      </div>
-    </div>
     <% else %>
     <blockquote>
       <h3>There are currently no geeks!</h3>

@@ -11,10 +11,23 @@
   line-height: 1;
 }
 
+.centerDropdown {
+  left: auto !important;
+  right: 0 !important;
+}
+.centerDropdown:after {
+  left: auto !important;
+  right: 0 !important;
+}
+
 @media all {
 
   .footer-right {
     text-align: right;
+  }
+
+  .container {
+    width: 980px;
   }
 }
 
@@ -22,7 +35,11 @@
   border-radius: 0px !important;
 }
 
-@media(max-width: $screen-xs-max){
+@media(max-width: 980px){
+
+  .container {
+    width: 100%;
+  }
 
   .footer-left {
     text-align: center;

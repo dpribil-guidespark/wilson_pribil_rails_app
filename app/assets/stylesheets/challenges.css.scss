@@ -18,6 +18,18 @@
 
 };
 
+#piechart {
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.pie-col-md-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 @media(min-width: $screen-xs-max){
 
   #tabs-0 {
@@ -27,6 +39,12 @@
   #tabs-1 {
     display: none;
   };
+
+  #piechart {
+    width: 600px;
+    height: 300px;
+  }
+
 }
 
 @media(max-width: $screen-xs-max){
@@ -38,5 +56,10 @@
   #tabs-1 {
     display: block;
   };
+
+  #piechart {
+    width: 365px;
+    height: 180px;
+  }
 
 }

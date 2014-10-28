@@ -1,4 +1,8 @@
-wilson_pribil_rails_app
+Wins of the Week
 =======================
 
-The rails app for GuideSpark developed by David Wilson and David Pribil
+A web app for Geek of the Week and Req of the Week at GuideSpark, created by David Pribil and David Wilson.
+
+Instructions for deployment:
+ * No external programs are needed
+ * No rake tasks needed apart from db:migrate

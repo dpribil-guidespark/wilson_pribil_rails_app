@@ -3,11 +3,14 @@
 
     <%= render partial: 'layouts/username', locals: {:form => f, :show_department => true}%>
 
-      <div class="input-group col-md-12">
-          <%= f.text_field :answer, :class => "form-control", :placeholder => "Your guess?" %>
-          <span class="input-group-btn">
-               <%= f.submit "Submit", :class => 'btn btn-primary' %>
-          </span>
+    <div class="input-group col-md-12">
+      <div class="field form-group input-group">
+        <span class="input-group-addon">Guess</span>
+        <%= f.text_field :answer, :class => "form-control", :placeholder => "Your guess?" %>
+        <span class="input-group-btn">
+          <%= f.submit "Submit", :class => 'btn btn-primary' %>
+        </span>
       </div>
+    </div>
 
 <% end %>

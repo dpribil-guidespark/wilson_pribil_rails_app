@@ -3,7 +3,7 @@
   <div class="panel-body">
     <% if challenge_winners(historic_challenge) %>
     <blockquote>
-      <h3><strong><%= historic_challenge.question %>:</strong> <%= historic_challenge.answer %></h3>
+      <h3 class="challenge-question"><%= historic_challenge.question %>: <span class="challenge-answer"><%= historic_challenge.answer %></span></h3>
       <% if historic_challenge.hint %>
       <p>
         <strong>Hint:</strong>

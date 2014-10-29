@@ -1,21 +1,24 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="field form-group">
+    <div class="field form-group input-group">
+      <span class="input-group-addon">First Name</span>
       <%= form.autocomplete_field :first_name, autocomplete_user_first_name_users_path, :value => cookies[:guess_game_first_name], :class => "form-control", :placeholder => "First Name" %>
     </div>
 
   </div>
 
   <div class="col-md-12">
-    <div class="field form-group">
+    <div class="field form-group input-group">
+      <span class="input-group-addon">Last Name</span>
       <%= form.autocomplete_field :last_name, autocomplete_user_last_name_users_path, :value => cookies[:guess_game_last_name], :class => "form-control", :placeholder => "Last Name" %>
     </div>
   </div>
 
   <% if show_department %>
       <div class="col-md-12">
-        <div class="field form-group">
-          <%= form.select :department, options_for_select(DEPARTMENT_CONSTANTS.map { |x| [x[:name], x[:id]] }, cookies[:guess_game_department] || 0), {}, {'class' => 'btn btn-default dropdown-toggle form-control', 'data-toggle' => 'dropdown'} %>
+        <div class="field form-group input-group">
+          <span class="input-group-addon">Department</span>
+          <%= form.select :department, options_for_select(DEPARTMENT_CONSTANTS.map { |x| [x[:name], x[:id]] }, cookies[:guess_game_department] || 0), {}, {'class' => 'btn btn-default dropdown-toggle form-control department-dropdown', 'data-toggle' => 'dropdown'} %>
         </div>
       </div>
   <% end %>

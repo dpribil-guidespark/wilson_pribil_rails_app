@@ -1,32 +1,32 @@
 <% ['nav-pills nav-justified', 'nav-tabs'].each_with_index do |v,i|%>
     <ul id="tabs-<%= i %>" class="nav <%= v %>" data-tabs="tabs">
       <li class="col-xs-4<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>">
-        <a href="#challenge_tab" data-toggle="tab">Challenge</a>
+        <a href="#challenge_tab" data-toggle="tab"><i class='fa fa-question'></i> Challenge</a>
       </li>
       <li class="col-xs-4<% if flash[:tab] ==  'guesses_tab'%> active<% end %>">
-        <a href="#guesses_tab" data-toggle="tab">Guesses <span class="badge"><%= @challenge.guesses.size %></span></a>
+        <a href="#guesses_tab" data-toggle="tab"><i class='fa fa-lightbulb-o'></i> Guesses <span class="badge"><%= @challenge.guesses.size %></span></a>
       </li>
       <li class="col-xs-4<% if flash[:tab] ==  'leaderboard_tab'%> active<% end %>">
-        <a href="#leaderboard_tab" data-toggle="tab">Leaderboard</a>
+        <a href="#leaderboard_tab" data-toggle="tab"><i class='fa fa-trophy'></i> Leaderboard</a>
       </li>
     </ul>
 <% end %>
 
 <div id="my-tab-content" class="tab-content">
   <div class="tab-pane<% unless flash[:tab] || flash[:tab] ==  'challenge_tab'%> active<% end %>" id="challenge_tab">
-    <h1 class="text-center">The question for this week is...</h1>
+    <h1 class="text-center challenge-lead-text">The question for this week is...</h1>
 
     <blockquote>
-      <h3><%= @challenge.question %></h3>
+      <h3 class="challenge-question"><%= @challenge.question %></h3>
       <% if @challenge.hint %>
         <% if !@challenge.hint.empty? %>
-          <p>
+          <p class="challenge-hint">
             <strong>Hint:</strong>
             <%= @challenge.hint %>
           </p>
         <% end %>
       <% end %>
-      <footer><%= "#{@user.first_name} #{@user.last_name}" %></footer>
+      <footer class="challenge-setter"><%= "#{@user.first_name} #{@user.last_name}" %></footer>
     </blockquote>
     <%= render 'challenges/answer'%>
   </div>
